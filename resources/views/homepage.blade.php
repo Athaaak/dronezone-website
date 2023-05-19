@@ -1,7 +1,7 @@
 @extends('template.template')
 
 @section('title')
-    Dronezone
+    Dronezonesia
 @endsection
 
 @section('content')
