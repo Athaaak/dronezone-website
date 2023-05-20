@@ -19,4 +19,6 @@ use App\Http\Controllers\HomepageController;
 // });
 
 Route::get('/',[HomepageController::class, 'homepage']);
+Route::get('/login',[HomepageController::class, 'login']);
+
 

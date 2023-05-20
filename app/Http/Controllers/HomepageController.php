@@ -9,4 +9,8 @@ class HomepageController extends Controller
     public function homepage(){
         return view('homepage');
     }
+
+    public function login(){
+        return view('login');
+    }
 }
