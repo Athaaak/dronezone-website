@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\HomepageController;
-=======
->>>>>>> f1f65041cf3cc36a808bc4359849db1c6d413e63
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +14,9 @@ use App\Http\Controllers\HomepageController;
 |
 */
 
-<<<<<<< HEAD
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 Route::get('/',[HomepageController::class, 'homepage']);
 
-=======
-Route::get('/', function () {
-    return view('welcome');
-});
->>>>>>> f1f65041cf3cc36a808bc4359849db1c6d413e63
