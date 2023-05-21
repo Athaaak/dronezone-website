@@ -13,8 +13,8 @@
         </div>
 
         <div class="flex2 text-end d-none d-md-block">
-          <button class="whiteLink siteLink">Register</button>
-          <button class="whiteLink siteLink">Login</button>
+          <button class="whiteLink siteLink" onclick="window.location.href='register'">Register</button>
+          <button class="whiteLink siteLink" onclick="window.location.href='login'">Login</button>
         </div>
       </div>
     </div>
