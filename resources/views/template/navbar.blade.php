@@ -5,7 +5,7 @@
           <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea" onclick="menuToggle()"><i class="fas fa-clock"></i></i> MENU</button>
         </div>
         <div class="flex3 text-center" id="siteBrand">
-          DRONEZONESIA
+          DRONEZONE
         </div>
 
         <div class="flex2 text-end d-block d-md-none">
