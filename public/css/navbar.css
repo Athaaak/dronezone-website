@@ -87,3 +87,59 @@
     border:none;
     outline:none
   }
+
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .login-container{
+    display: flex;
+    .icon-container{
+      position: relative;
+      display: flex;
+      margin: 0 auto;
+      .whatsapp{
+        position: relative;
+        display: flex;
+        margin: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+      .whatsapp img{
+        width: auto;
+        height: auto;
+      }
+      .whatsapp img:nth-child(2){
+        display: none;
+      }
+      .whatsapp:hover img:nth-child(1){
+        display: none;
+      }
+      .whatsapp:hover img:nth-child(2){
+        display: block;
+      }
+      .email{
+        position: relative;
+        display: flex;
+        margin: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+      .email img{
+        width: auto;
+        height: auto;
+      }
+      .email img:nth-child(2){
+        display: none;
+      }
+      .email:hover img:nth-child(1){
+        display: none;
+      }
+      .email:hover img:nth-child(2){
+        display: block;
+      }
+    }
+  }

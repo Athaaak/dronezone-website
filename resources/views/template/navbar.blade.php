@@ -4,7 +4,7 @@
         <div class="flex2">
           <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea" onclick="menuToggle()"><i class="fas fa-clock"></i></i> MENU</button>
         </div>
-        <div class="flex3 text-center" id="siteBrand">
+        <div class="logo" id="siteBrand">
           DRONEZONE
         </div>
 
@@ -12,8 +12,21 @@
           <button class="whiteLink siteLink"><i class="fas fa-search"></i></button>
         </div>
 
-        <div class="flex2 text-end d-none d-md-block">
-          <button class="whiteLink siteLink" onclick="window.location.href='register'">Register</button>
+        <div class="login-container">
+          <div class="icon-container">
+            <div class="whatsapp">
+              <a href="">
+              <img src="https://img.icons8.com/ios-glyphs/30/whatsapp.png">
+                <img src="https://img.icons8.com/windows/30/whatsapp--v1.png"> 
+              </a>
+            </div>
+            <div class="email">
+              <a href="">
+                <img src="https://img.icons8.com/material-rounded/30/new-post.png">
+                <img src="https://img.icons8.com/material-outlined/30/new-post.png">
+              </a>
+            </div>
+          </div>
           <button class="whiteLink siteLink" onclick="window.location.href='login'">Login</button>
         </div>
       </div>
