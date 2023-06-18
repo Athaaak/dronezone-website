@@ -11,7 +11,7 @@
     <div class="landing-page">
         <div class="video-box">
             <div class="video-container">
-            <video class="video" autoplay muted playsinline>
+            <video class="video" autoplay muted playsinline loop>
                     <source src="img/videoplayback.mp4"/>
                 </video>
                 <div class="text-container">
