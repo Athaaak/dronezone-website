@@ -90,8 +90,9 @@
 
   .logo{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    margin-left: 20px;
     width: 100%;
   }
 
