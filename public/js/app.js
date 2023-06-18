@@ -7,5 +7,5 @@ function menuToggle(){
 if(window.innerWidth < 426) siteBrand.innerHTML = "MAS"
 window.onresize = function(){
   if(window.innerWidth < 420) siteBrand.innerHTML = "MAS"
-  else siteBrand.innerHTML = "MY AWESOME WEBSITE"
+  else siteBrand.innerHTML = "DRONEZONE"
 }
