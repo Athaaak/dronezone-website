@@ -32,11 +32,11 @@
                 <div class="option-button">Temukan Disini</div>
             </div>
             <div class="option-image">
-                <img src="img/wedding.jpg" style="height: 100%; width: 100%; object-fit: contain"/>
+                <img src="img/wedding.jpg"/>
             </div>
         </div>
         <div class="drone-photo">
-            <img src="img/white-drone.png" style="width: 100%"/>
+            <img src="img/white-drone.png"/>
         </div>
         <div class="option-box-second">
             <div class="option-text-second">
@@ -45,7 +45,7 @@
                 <div class="option-button-second">Temukan Disini</div>
             </div>
             <div class="option-image">
-                <img src="img/industrial.jpg" style='height: 100%; width: 100%; object-fit: contain'/>
+                <img src="img/industrial.jpg"/>
             </div>
         </div>
     </div>
