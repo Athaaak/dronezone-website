@@ -16,15 +16,21 @@
                 </video>
                 <div class="text-container">
                     <label class="header">Sewa Drone di Surabaya <br>Kini Lebih Mudah</label>
-                    <h5 class="description">Melalui website kami, anda dapat dengan mudah menelusuri berbagai mitra penyedia sewa drone di Surabaya. Kami berkomitmen untuk menyediakan informasi yang jelas dan akurat sehingga anda dapat mengetahui informasi mitra yang tepat secara umum maupun profesional sesuai dengan kebutuhan anda.</h5>
+                    <h5 class="description">
+                        <label class="desc">
+                            Melalui website kami, temukan puluhan mitra persewaan drone yang telah tersertifikasi dan terpercaya di Surabaya sesuai kebutuhan anda.
+                            <br>Anda juga dapat mengajukan untuk menjadi mitra kami, Gratis.
+                        </label>
+                    </h5>
                     <div class="header-button">
-                        <button class="button">Jelajahi Sekarang</button>
+                        <button class="button">Sewa Drone Sekarang</button>
+                        <button class="button-mitra">Gabung Mitra Kami</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="option-container">
+    <!-- <div class="option-container">
         <div class="option-box">
             <div class="option-text">
                 <label class="option-content">Cari Mitra <br>Dronemu Sekarang!</label>
@@ -48,6 +54,6 @@
                 <img src="img/industrial.jpg"/>
             </div>
         </div>
-    </div>
+    </div> -->
 
 @endsection

@@ -8,10 +8,6 @@
           DRONEZONE
         </div>
 
-        <div class="flex2 text-end d-block d-md-none">
-          <button class="whiteLink siteLink"><i class="fas fa-search"></i></button>
-        </div>
-
         <div class="login-container">
           <div class="icon-container">
             <div class="whatsapp">
