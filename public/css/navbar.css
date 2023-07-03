@@ -1,0 +1,203 @@
+
+.flexMain {
+    display:flex;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  }
+  .flex1 { flex:1 }
+  .flex2 { flex:2 }
+  .flex3 { flex:3 }
+
+  button.siteLink {
+    margin-left:-5px;
+    border:none;
+    padding:24px;
+    display:inline-block;
+    min-width:115px;
+    @media (max-width: 767px) {
+        margin-left: -5px;
+        border: none;
+        padding: 12px 0px 12px 0px;
+        display: inline-block;
+        min-width: 115px;
+    }
+  }
+  .whiteLink {
+    background : #fff;
+  }
+  .whiteLink:active {
+    background : #000;
+    color: #fff;
+  }
+  .blackLink {
+    color: #fff;
+    background:#232323;
+    transition: all 300ms linear;
+  }
+
+  .blackLink:active {
+    color: #000;
+    background:#fff
+  }
+  #siteBrand {
+    font-family: Helvetica;
+    letter-spacing : 0px;
+    font-size:32px;
+    font-weight: 700;
+    color:#252525;
+    line-height : 1em;
+    @media (max-width: 767px) {
+      font-family: Helvetica;
+      letter-spacing : 0px;
+      font-size:16px;
+      font-weight: 700;
+      color:#252525;
+      line-height : 1em;
+    }
+  }
+  #menuDrawer {
+    background:#ffffff;
+    position:fixed;
+    height:100vh;
+    overflow:auto;
+    z-index:12312;
+    top:0;
+    left:0;
+    border-right:1px solid #eaeaea;
+    min-width:25%;
+    max-width:320px;
+    width:100%;
+    transform : translateX(-100%);
+    transition : transform 200ms linear;
+  }
+  #mainNavigation {
+    transition : transform 200ms linear;
+    background : #ffffff;
+  }
+  .drawMenu > #menuDrawer {
+    transform : translateX(0%);
+  }
+  .drawMenu > #mainNavigation {
+    transform : translateX(0%);
+  }
+
+  .fa-times {
+    cursor : pointer
+  }
+  a.nav-menu-item:hover {
+    margin-left:2px;
+    border-left:10px solid black;
+  }
+  a.nav-menu-item{
+    transition:border 200ms linear;
+    text-decoration:none;
+    display:block;
+    padding:18px;
+    padding-left:32px;
+    border-bottom:1px solid #eaeaea;
+    font-weight:bold;
+    color:#343434
+  }
+  select.noStyle {
+    border:none;
+    outline:none
+  }
+
+  .logo{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 20px;
+    width: 100%;
+  }
+
+  .login-container{
+    display: flex;
+    .icon-container{
+      position: relative;
+      display: flex;
+      margin: 0 auto;
+      .whatsapp{
+        position: relative;
+        display: flex;
+        margin: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+      .whatsapp img{
+        width: auto;
+        height: auto;
+      }
+      .whatsapp img:nth-child(2){
+        display: none;
+      }
+      .whatsapp:hover img:nth-child(1){
+        display: none;
+      }
+      .whatsapp:hover img:nth-child(2){
+        display: block;
+      }
+      .email{
+        position: relative;
+        display: flex;
+        margin: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+      .email img{
+        width: auto;
+        height: auto;
+      }
+      .email img:nth-child(2){
+        display: none;
+      }
+      .email:hover img:nth-child(1){
+        display: none;
+      }
+      .email:hover img:nth-child(2){
+        display: block;
+      }
+      @media (max-width: 767px) {
+        .whatsapp{
+          position: relative;
+          display: flex;
+          margin: 0px 5px 5px 20px;
+          align-items: center;
+          justify-content: center;
+        }
+        .whatsapp img{
+          width: 20px;
+        }
+        .whatsapp img:nth-child(2){
+          display: none;
+        }
+        .whatsapp:hover img:nth-child(1){
+          display: none;
+        }
+        .whatsapp:hover img:nth-child(2){
+          display: block;
+        }
+
+        .email{
+          position: relative;
+          display: flex;
+          margin: 0px 5px 5px 5px;
+          align-items: center;
+          justify-content: center;
+        }
+        .email img{
+          width: 20px;
+          height: auto;
+        }
+        .email img:nth-child(2){
+          display: none;
+        }
+        .email:hover img:nth-child(1){
+          display: none;
+        }
+        .email:hover img:nth-child(2){
+          display: block;
+        }
+      }
+    }
+  }
