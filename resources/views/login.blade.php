@@ -52,7 +52,6 @@
 		<path class="st1" d="m12 16.5c-0.8 0-1.5-0.7-1.5-1.5s0.7-1.5 1.5-1.5 1.5 0.7 1.5 1.5-0.7 1.5-1.5 1.5zm0-2c-0.3 0-0.5 0.2-0.5 0.5s0.2 0.5 0.5 0.5 0.5-0.2 0.5-0.5-0.2-0.5-0.5-0.5z"/>
 </svg>
         </div>
-
       </div>
       <button type="submit" onClick="return false;">Log in</button>
       <a href="/register" class="discrete">Register</a>
