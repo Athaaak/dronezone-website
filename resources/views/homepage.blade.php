@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <!-- <div class="option-container">
+    <div class="option-container">
         <div class="option-box">
             <div class="option-text">
                 <label class="option-content">Cari Mitra <br>Dronemu Sekarang!</label>
@@ -38,11 +38,8 @@
                 <div class="option-button">Temukan Disini</div>
             </div>
             <div class="option-image">
-                <img src="img/wedding.jpg"/>
+                <img src="img/wedding.jpg" style="width: 100%; height: auto;"/>
             </div>
-        </div>
-        <div class="drone-photo">
-            <img src="img/white-drone.png"/>
         </div>
         <div class="option-box-second">
             <div class="option-text-second">
@@ -51,8 +48,8 @@
                 <div class="option-button-second">Temukan Disini</div>
             </div>
             <div class="option-image">
-                <img src="img/industrial.jpg"/>
+                <img src="img/industrial.jpg" style="width: 100%; height: auto;"/>
             </div>
         </div>
-    </div> -->
+    </div>
 @endsection
