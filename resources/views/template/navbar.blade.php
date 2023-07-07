@@ -24,10 +24,10 @@
             </div>
           </div>
           @if (is_null(Auth::user()))
-            <a class="whiteLink siteLink" href="{{route('login')}}">Login</a>
+            <a class="login" href="{{route('login')}}">Login</a>
             @else
             <p>{{Auth::user()->email}}</p>
-            <div style="display:flex; justify-content:flex-end;">
+            <div class="login" style="display:flex; justify-content:flex-end;">
                 <form action="{{route('logout')}}" method="post">
                     @csrf
                     <button type="submit">Log out</button>

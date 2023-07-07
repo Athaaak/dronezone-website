@@ -111,6 +111,16 @@
     width: 100%;
   }
 
+  .login{
+    color: black;
+    display: flex;
+    margin: 13px 20px 0 20px;
+    text-decoration: none;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
   .login-container{
     display: flex;
     .icon-container{
