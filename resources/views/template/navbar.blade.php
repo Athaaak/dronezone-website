@@ -2,7 +2,7 @@
     <div role="navigation" class="sticky-top border-bottom border-top" id="mainNavigation">
       <div class="flexMain">
         <div class="flex2">
-          <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea" onclick="menuToggle()"><i class="fas fa-clock"></i></i> MENU</button>
+          <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea" onclick="menuToggle()"><i class="fas fa-clock"></i></i> <img src="https://img.icons8.com/sf-black/30/menu.png"/></button>
         </div>
         <div class="logo" id="siteBrand">
           DRONEZONE

@@ -230,3 +230,9 @@ input:focus {
   width: auto;
   margin: 20px;
 }
+
+.invalid-feedback{
+  color: red;
+  margin-top: 3px;
+  font-size: 14px;
+}
