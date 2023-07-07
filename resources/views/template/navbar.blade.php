@@ -12,14 +12,14 @@
           <div class="icon-container">
             <div class="whatsapp">
               <a href="">
-              <img src="https://img.icons8.com/ios-glyphs/30/whatsapp.png">
-                <img src="https://img.icons8.com/windows/30/whatsapp--v1.png">
+              <img src="https://img.icons8.com/windows/32/whatsapp--v1.png">
+                <img src="https://img.icons8.com/ios-glyphs/32/whatsapp.png ">
               </a>
             </div>
             <div class="email">
               <a href="">
+                <img src="https://img.icons8.com/material-outlined/30/new-post.png ">
                 <img src="https://img.icons8.com/material-rounded/30/new-post.png">
-                <img src="https://img.icons8.com/material-outlined/30/new-post.png">
               </a>
             </div>
           </div>
