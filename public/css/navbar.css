@@ -121,6 +121,42 @@
     font-weight: 600;
   }
 
+  .already-login{
+    color: black;
+    display: flex;
+    margin: 13px 20px 0 20px;
+    text-decoration: none;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .logout-button{
+    margin: 8px 6px 6px 0px;
+    .button{
+      border: none;
+      background-color: white;
+    }
+    .button:focus{
+      border: none;
+      background-color: white;
+    }
+    .button img{
+      width: auto;
+      height: auto;
+    }
+    .button img:nth-child(2){
+      display: none;
+    }
+    .button:hover img:nth-child(1){
+      display: none;
+    }
+    .button:hover img:nth-child(2){
+      display: block;
+    }
+  }
+
+
   .login-container{
     display: flex;
     .icon-container{

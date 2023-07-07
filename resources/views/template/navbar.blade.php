@@ -26,11 +26,14 @@
           @if (is_null(Auth::user()))
             <a class="login" href="{{route('login')}}">Login</a>
             @else
-            <p>{{Auth::user()->email}}</p>
-            <div class="login" style="display:flex; justify-content:flex-end;">
+            <p class="already-login">{{Auth::user()->name}}</p>
+            <div class="logout-button" style="display:flex; justify-content:flex-end;">
                 <form action="{{route('logout')}}" method="post">
                     @csrf
-                    <button type="submit">Log out</button>
+                    <button type="submit" class="button">
+                      <img src="https://img.icons8.com/material-outlined/30/exit.png" />
+                      <img src="https://img.icons8.com/material-rounded/30/exit.png" />
+                    </button>
                 </form>
             </div>
           @endif
