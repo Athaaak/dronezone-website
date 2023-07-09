@@ -52,7 +52,7 @@
             </select>
           </div>
           <div class="col text-end ">
-            <i class="fas fa-times" role="btn" onclick="menuToggle()"></i>
+            <i role="btn" onclick="menuToggle()"><img src="https://img.icons8.com/ios-filled/20/long-arrow-left.png" style="cursor: pointer;"/></i>
           </div>
         </div>
       </div>
