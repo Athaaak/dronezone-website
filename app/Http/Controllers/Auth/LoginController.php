@@ -42,7 +42,7 @@ class LoginController extends Controller
             return $this->redirectTo = route('dashboard-admin');
         }
         if(auth()->user()->role == 'provider'){
-            return $this->redirectTo = route('home');
+            return $this->redirectTo = route('dashboard-provider');
         }
     }
 }

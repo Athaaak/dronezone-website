@@ -30,7 +30,7 @@ Route::middleware(['admin'])->group(function () {
 
 Route::middleware(['provider'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role provider
-    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard-provider', [App\Http\Controllers\ProviderController::class, 'index'])->name('dashboard-provider');
 });
 
 

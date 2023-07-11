@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureIsProvider
+class EnsureUserIsProvider
 {
     /**
      * Handle an incoming request.
