@@ -25,7 +25,7 @@ Auth::routes();
 
 Route::middleware(['admin'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role admin
-    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');
 });
 
 Route::middleware(['provider'])->group(function () {
@@ -33,6 +33,8 @@ Route::middleware(['provider'])->group(function () {
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
+
+Route::post('/register-provider', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register-provider');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/forbidden', function() {
