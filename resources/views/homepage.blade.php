@@ -27,7 +27,8 @@ Dronezone
                 <div class="header-button">
                     <a href="{{ route('explore') }}"><button class="button">Sewa Drone
                             Sekarang</button></a>
-                    <a href="/"><button class="button-mitra">Gabung Mitra Kami</button></a>
+                    <a href="{{ route('login') }}"><button class="button-mitra">Gabung Mitra
+                            Kami</button></a>
                 </div>
             </div>
         </div>
