@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::get('/',[HomepageController::class, 'homepage']);
+Route::get('/explore',[HomepageController::class, 'explore'])->name('explore');
+Route::get('/explore-general',[HomepageController::class, 'exploremain'])->name('general');
+Route::get('/explore-professional',[HomepageController::class, 'exploremain'])->name('professional');
+Route::get('/articles',[HomepageController::class, 'article'])->name('article');
+
 
 Auth::routes();
 
