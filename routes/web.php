@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/csrf', function () {
+    // return view('welcome');
+    echo csrf_token();
+});
 
 Route::get('/',[HomepageController::class, 'homepage']);
 Route::get('/explore',[HomepageController::class, 'explore'])->name('explore');
@@ -25,12 +26,16 @@ Route::get('/explore-general',[HomepageController::class, 'exploremain'])->name(
 Route::get('/explore-professional',[HomepageController::class, 'exploremain'])->name('professional');
 Route::get('/articles',[HomepageController::class, 'article'])->name('article');
 
-
 Auth::routes();
+
+Route::resources([
+    'article'=>App\Http\Controllers\ArticleController::class,
+]);
 
 Route::middleware(['admin'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role admin
     Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');
+
 });
 
 Route::middleware(['provider'])->group(function () {
