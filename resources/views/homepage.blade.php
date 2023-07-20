@@ -59,7 +59,7 @@ Dronezone
         </div>
     </div> -->
 
-<div class="feature-container">
+<!-- <div class="feature-container">
     <section class="news-reel">
         <h2 class="section-title">Latest Article</h2>
         <div class="categories">
@@ -102,5 +102,5 @@ Dronezone
             </div>
         </div>
     </section>
-</div>
+</div> -->
 @endsection

@@ -1,5 +1,9 @@
 @extends('template.template')
 
+@section('title')
+Dronezone
+@endsection
+
 @section('content')
 
 <head>

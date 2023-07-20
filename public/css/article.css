@@ -1,0 +1,171 @@
+/* Article CSS */
+
+/* Reset some default browser styles */
+body,
+h1,
+h2,
+h3,
+p,
+a,
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Font family styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+h2,
+.category {
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Basic styling for the news reel section */
+.news-reel {
+    padding: 20px;
+    background-color: currentColor;
+}
+
+/* Styling for the categories */
+.categories {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+/* Styling for individual category */
+.category {
+    background: none;
+    box-shadow: 0px 0px 1px 1px white;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.category.active {
+    background-color: orange;
+    border: 1px orange;
+    box-shadow: none;
+    color: black;
+}
+
+.category:hover {
+    background-color: orange;
+    border: 1px orange;
+    box-shadow: none;
+    color: black;
+}
+
+/* Styling for the section title */
+.section-title {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/* Styling for the news container */
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 -20px;
+}
+
+/* Styling for the news items */
+.news-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: calc(33.33% - 40px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px gray;
+}
+
+.news-item:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for the news images */
+.news-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Styling for the news content */
+.news-content {
+    text-align: center;
+}
+
+/* Styling for the news titles */
+.news-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Styling for the news summaries */
+.news-summary {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the "Read More" button */
+.read-more-link {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: orange;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.read-more-link:hover {
+    background-color: black;
+}
+
+/* Styling for the contained box */
+.contained-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Styling for the box title */
+.box-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the box content */
+.box-content {
+    text-align: center;
+}
+
+/* Styling for the box news title */
+.box-content .news-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Styling for the box news summary */
+.box-content .news-summary {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
