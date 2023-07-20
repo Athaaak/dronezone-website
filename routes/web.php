@@ -25,15 +25,17 @@ Route::get('/explore',[HomepageController::class, 'explore'])->name('explore');
 Route::get('/explore-general',[HomepageController::class, 'exploremain'])->name('general');
 Route::get('/explore-professional',[HomepageController::class, 'exploremain'])->name('professional');
 Route::get('/articles',[HomepageController::class, 'article'])->name('article');
+
+Auth::routes();
+
 Route::resources([
     'article'=>App\Http\Controllers\ArticleController::class,
 ]);
 
-Auth::routes();
-
 Route::middleware(['admin'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role admin
     Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');
+
 });
 
 Route::middleware(['provider'])->group(function () {
