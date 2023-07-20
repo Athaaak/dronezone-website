@@ -15,16 +15,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/csrf', function () {
+    // return view('welcome');
+    echo csrf_token();
+});
 
 Route::get('/',[HomepageController::class, 'homepage']);
 Route::get('/explore',[HomepageController::class, 'explore'])->name('explore');
 Route::get('/explore-general',[HomepageController::class, 'exploremain'])->name('general');
 Route::get('/explore-professional',[HomepageController::class, 'exploremain'])->name('professional');
 Route::get('/articles',[HomepageController::class, 'article'])->name('article');
-
+Route::resources([
+    'article'=>App\Http\Controllers\ArticleController::class,
+]);
 
 Auth::routes();
 
