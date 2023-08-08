@@ -1,1 +1,5 @@
-<h1>Admin</h1>
+@extends('template.template')
+
+@section('title')
+Dronezone Admin
+@endsection

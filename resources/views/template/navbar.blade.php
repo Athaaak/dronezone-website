@@ -5,24 +5,37 @@
                 <button class="whiteLink siteLink" style="border-right:1px solid #eaeaea" onclick="menuToggle()"><i
                         class="fas fa-clock"></i></i> <img src="https://img.icons8.com/sf-black/30/menu.png" /></button>
             </div>
-            <div class="logo" id="siteBrand">
-                DRONEZONE
-            </div>
+
+            @if(is_null(Auth::user()))
+                <div class="logo" id="siteBrand">
+                    DRONEZONE
+                </div>
+            @elseif(Auth::user()->role == 'admin')
+                <div class="logo" id="siteBrand">
+                    DRONEZONE adminsite.
+                </div>
+            @elseif(Auth::user()->role == 'provider')
+                <div class="logo" id="siteBrand">
+                    DRONEZONE providersite.
+                </div>
+            @endif
 
             <div class="login-container">
                 <div class="icon-container">
-                    <div class="whatsapp">
-                        <a href="">
-                            <img src="https://img.icons8.com/windows/32/whatsapp--v1.png">
-                            <img src="https://img.icons8.com/ios-glyphs/32/whatsapp.png ">
-                        </a>
-                    </div>
-                    <div class="email">
-                        <a href="">
-                            <img src="https://img.icons8.com/material-outlined/30/new-post.png ">
-                            <img src="https://img.icons8.com/material-rounded/30/new-post.png">
-                        </a>
-                    </div>
+                    @if(is_null(Auth::user()))
+                        <div class="whatsapp">
+                            <a href="">
+                                <img src="https://img.icons8.com/windows/32/whatsapp--v1.png">
+                                <img src="https://img.icons8.com/ios-glyphs/32/whatsapp.png ">
+                            </a>
+                        </div>
+                        <div class="email">
+                            <a href="">
+                                <img src="https://img.icons8.com/material-outlined/30/new-post.png ">
+                                <img src="https://img.icons8.com/material-rounded/30/new-post.png">
+                            </a>
+                        </div>
+                    @endif
                 </div>
                 @if(is_null(Auth::user()))
                     <a class="login" href="{{ route('login') }}">Login</a>
@@ -59,13 +72,19 @@
             </div>
         </div>
         <div>
-            <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
-            <a href="{{ route('explore') }}" class="nav-menu-item"><i
-                    class="fab fa-product-hunt me-3"></i>Explore</a>
-            <a href="{{ route('article') }}" class="nav-menu-item"><i
-                    class="fas fa-search me-3"></i>Article</a>
-            <a href="#" class="nav-menu-item"><i class="fas fa-file-alt me-3"></i>Join Us</a>
-            <a href="#" class="nav-menu-item"><i class="fas fa-building me-3"></i>About Us</a>
+            @if(is_null(Auth::user()))
+                <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
+                <a href="{{ route('explore') }}" class="nav-menu-item"><i
+                        class="fab fa-product-hunt me-3"></i>Explore</a>
+                <a href="{{ route('article') }}" class="nav-menu-item"><i
+                        class="fas fa-search me-3"></i>Article</a>
+                <a href="#" class="nav-menu-item"><i class="fas fa-file-alt me-3"></i>Join Us</a>
+                <a href="#" class="nav-menu-item"><i class="fas fa-building me-3"></i>About Us</a>
+            @elseif(Auth::user()->role == 'admin')
+                <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Articles</a>
+            @elseif(Auth::user()->role == 'provider')
+                <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
+            @endif
         </div>
     </div>
 </div>
