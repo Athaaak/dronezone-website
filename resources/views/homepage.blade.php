@@ -1,5 +1,6 @@
 @extends('template.template')
 
+
 @section('title')
 Dronezone
 @endsection
@@ -103,4 +104,5 @@ Dronezone
         </div>
     </section>
 </div> -->
+@include('template.footer')
 @endsection

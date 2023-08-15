@@ -51,7 +51,19 @@ Dronezone
                     <a href="#" class="read-more-link" style="color: white;">Read More</a>
                 </div>
             </div>
+            <div class="news-item">
+                <div class="news-image">
+                    <img src="news3.jpg" alt="News 3">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">News 3</h3>
+                    <p class="news-summary">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                        eu fugiat nulla pariatur.</p>
+                    <a href="#" class="read-more-link" style="color: white;">Read More</a>
+                </div>
+            </div>
         </div>
     </section>
 </div>
+@include('template.footer')
 @endsection
