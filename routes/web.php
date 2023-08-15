@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,8 @@ Route::get('/explore',[HomepageController::class, 'explore'])->name('explore');
 Route::get('/explore-general',[HomepageController::class, 'exploremain'])->name('general');
 Route::get('/explore-professional',[HomepageController::class, 'exploremain'])->name('professional');
 Route::get('/articles',[HomepageController::class, 'article'])->name('article');
+Route::get('/admin',[AdminController::class, 'index'])->name('admin');
+Route::get('/article-admin',[AdminController::class, 'articleadmin'])->name('article-admin');
 
 Auth::routes();
 

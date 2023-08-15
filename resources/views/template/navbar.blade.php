@@ -81,7 +81,9 @@
                 <a href="#" class="nav-menu-item"><i class="fas fa-file-alt me-3"></i>Join Us</a>
                 <a href="#" class="nav-menu-item"><i class="fas fa-building me-3"></i>About Us</a>
             @elseif(Auth::user()->role == 'admin')
-                <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Articles</a>
+                <a href="/admin" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
+                <a href="{{ route('article-admin') }}" class="nav-menu-item"><i
+                        class="fas fa-home me-3"></i>Articles</a>
             @elseif(Auth::user()->role == 'provider')
                 <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
             @endif
