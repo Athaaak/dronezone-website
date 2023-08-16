@@ -23,8 +23,8 @@ Route::get('/csrf', function () {
 
 Route::get('/',[HomepageController::class, 'homepage']);
 Route::get('/explore',[HomepageController::class, 'explore'])->name('explore');
-Route::get('/explore-general',[HomepageController::class, 'exploremain'])->name('general');
-Route::get('/explore-professional',[HomepageController::class, 'exploremain'])->name('professional');
+Route::get('/explore-general',[HomepageController::class, 'exploregeneral'])->name('general');
+Route::get('/explore-professional',[HomepageController::class, 'exploreprofessional'])->name('professional');
 Route::get('/articles',[HomepageController::class, 'article'])->name('article');
 Route::get('/admin',[AdminController::class, 'index'])->name('admin');
 Route::get('/article-admin',[AdminController::class, 'articleadmin'])->name('article-admin');

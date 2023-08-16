@@ -21,13 +21,12 @@ class HomepageController extends Controller
     public function explore(){
         return view('explore-option');
     }
-    public function exploremain(){
-        if ('professional'){
+    public function exploreprofessional(){
             return view('professional');
-        }
-        elseif('general'){
+    }
+
+    public function exploregeneral(){
             return view('general');
-        }
     }
 
     public function article(){
