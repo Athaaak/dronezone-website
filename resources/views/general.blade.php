@@ -15,7 +15,7 @@
     <header class="header">
         <div class="header-content">
             <div class="header-left">
-                <img src="travel-image.jpg" alt="Travel" class="travel-image">
+                <h1 class="header-logo">DRONEZONE</h1>
                 <h1 class="header-text">Cari Vendor Dronemu Sekarang!</h1>
             </div>
             <div class="feature-block">
