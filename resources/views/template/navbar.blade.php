@@ -1,4 +1,4 @@
-<div id="menuHolder">
+<div id="menuHolder" class="menuHolder">
     <div role="navigation" class="sticky-top border-bottom border-top" id="mainNavigation">
         <div class="flexMain">
             <div class="flex2">
