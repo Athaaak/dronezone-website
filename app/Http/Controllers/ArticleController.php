@@ -20,7 +20,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $article = Article::latest()->paginate();
+
+        return view('article-admin', compact('article'));
     }
 
     /**
@@ -52,7 +54,8 @@ class ArticleController extends Controller
             'slug' => Str::slug($request->input('title')),
             'image' => $this->imageServices->uploadImage($request->file('image')),
         ]);
-        return response()->json(['message'=>'success']);
+        
+        return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -89,9 +92,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
-    {
-        $article->delete();
-        return response()->json(['message'=>'success']);
+    public function destroy($article)
+    {   
+        Article::find($article)->delete();
+
+        return redirect()->back()->with(['delete' => 'Data Berhasil Dihapus!']);
     }
 }

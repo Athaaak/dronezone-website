@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,6 @@ Route::get('/explore-general',[HomepageController::class, 'exploregeneral'])->na
 Route::get('/explore-professional',[HomepageController::class, 'exploreprofessional'])->name('professional');
 Route::get('/articles',[HomepageController::class, 'article'])->name('article');
 Route::get('/admin',[AdminController::class, 'index'])->name('admin');
-Route::get('/article-admin',[AdminController::class, 'articleadmin'])->name('article-admin');
 
 Auth::routes();
 
@@ -35,9 +35,14 @@ Route::resources([
     'article'=>App\Http\Controllers\ArticleController::class,
 ]);
 
+
+
 Route::middleware(['admin'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role admin
-    Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');
+    Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');    
+    Route::get('/article-admin',[ArticleController::class, 'articleadmin'])->name('article-admin');
+    Route::post('/article-admin',[ArticleController::class, 'store']);
+    Route::resource('/article-admin', ArticleController::class);
 
 });
 
