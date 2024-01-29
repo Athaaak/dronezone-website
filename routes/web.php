@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +39,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');
 
     Route::prefix('/admin')->group(function () {
+        Route::get('/company-profile', [CompanyController::class, 'index'])->name('company-proile');
         Route::resources([
-            'articles' => ArticleController::class
+            'dashboard' => DashboardController::class,
+            'articles' => ArticleController::class,
         ]);
     });
 });

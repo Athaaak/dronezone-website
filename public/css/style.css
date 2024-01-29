@@ -1,4 +1,9 @@
-.content .landingpage-video{
+.content .landingpage-video {
     position: absolute;
     margin: 100px 100px 0;
+}
+
+.header-color {
+    background-color: #00324a;
+    color: white;
 }

@@ -6,7 +6,7 @@
                         class="fas fa-clock"></i></i> <img src="https://img.icons8.com/sf-black/30/menu.png" /></button>
             </div>
 
-            @if(is_null(Auth::user()))
+            @if (is_null(Auth::user()))
                 <div class="logo" id="siteBrand">
                     DRONEZONE
                 </div>
@@ -22,7 +22,7 @@
 
             <div class="login-container">
                 <div class="icon-container">
-                    @if(is_null(Auth::user()))
+                    @if (is_null(Auth::user()))
                         <div class="whatsapp">
                             <a href="">
                                 <img src="https://img.icons8.com/windows/32/whatsapp--v1.png">
@@ -37,7 +37,7 @@
                         </div>
                     @endif
                 </div>
-                @if(is_null(Auth::user()))
+                @if (is_null(Auth::user()))
                     <a class="login" href="{{ route('login') }}">Login</a>
                 @else
                     <p class="already-login">{{ Auth::user()->name }}</p>
@@ -72,16 +72,17 @@
             </div>
         </div>
         <div>
-            @if(is_null(Auth::user()))
+            @if (is_null(Auth::user()))
                 <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
                 <a href="{{ route('explore') }}" class="nav-menu-item"><i
                         class="fab fa-product-hunt me-3"></i>Explore</a>
-                <a href="{{ route('article') }}" class="nav-menu-item"><i
-                        class="fas fa-search me-3"></i>Article</a>
+                <a href="{{ route('article') }}" class="nav-menu-item"><i class="fas fa-search me-3"></i>Article</a>
                 <a href="#" class="nav-menu-item"><i class="fas fa-file-alt me-3"></i>Join Us</a>
                 <a href="#" class="nav-menu-item"><i class="fas fa-building me-3"></i>About Us</a>
             @elseif(Auth::user()->role == 'admin')
                 <a href="/admin" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
+                <a href="{{ route('dashboard.index') }}" class="nav-menu-item"><i
+                        class="fas fa-home me-3"></i>Dashboard</a>
                 <a href="/article-admin" class="nav-menu-item"><i class="fas fa-home me-3"></i>Articles</a>
             @elseif(Auth::user()->role == 'provider')
                 <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
