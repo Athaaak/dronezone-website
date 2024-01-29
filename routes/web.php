@@ -22,28 +22,25 @@ Route::get('/csrf', function () {
     echo csrf_token();
 });
 
-Route::get('/',[HomepageController::class, 'homepage']);
-Route::get('/explore',[HomepageController::class, 'explore'])->name('explore');
-Route::get('/explore-general',[HomepageController::class, 'exploregeneral'])->name('general');
-Route::get('/explore-professional',[HomepageController::class, 'exploreprofessional'])->name('professional');
-Route::get('/articles',[HomepageController::class, 'article'])->name('article');
-Route::get('/admin',[AdminController::class, 'index'])->name('admin');
+Route::get('/', [HomepageController::class, 'homepage']);
+Route::get('/explore', [HomepageController::class, 'explore'])->name('explore');
+Route::get('/explore-general', [HomepageController::class, 'exploregeneral'])->name('general');
+Route::get('/explore-professional', [HomepageController::class, 'exploreprofessional'])->name('professional');
+Route::get('/articles', [HomepageController::class, 'article'])->name('article');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Auth::routes();
-
-Route::resources([
-    'article'=>App\Http\Controllers\ArticleController::class,
-]);
-
 
 
 Route::middleware(['admin'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role admin
-    Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');    
-    Route::get('/article-admin',[ArticleController::class, 'articleadmin'])->name('article-admin');
-    Route::post('/article-admin',[ArticleController::class, 'store']);
-    Route::resource('/article-admin', ArticleController::class);
+    Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');
 
+    Route::prefix('/admin')->group(function () {
+        Route::resources([
+            'articles' => ArticleController::class
+        ]);
+    });
 });
 
 Route::middleware(['provider'])->group(function () {
@@ -55,6 +52,6 @@ Route::middleware(['provider'])->group(function () {
 Route::post('/register-provider', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register-provider');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/forbidden', function() {
+Route::get('/forbidden', function () {
     return view('403');
 })->name('forbidden');

@@ -6,23 +6,52 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Services\ImageServices;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class ArticleController extends Controller
 {
     public function __construct(
         public ImageServices $imageServices,
         //public services
-    ){
-
+    ) {
     }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $article = Article::latest()->paginate();
+        if ($request->ajax()) {
+            $data = Article::latest();
 
-        return view('article-admin', compact('article'));
+            return DataTables::eloquent($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($data) {
+                    $slug = Str::slug($data->title);
+                    return '
+                    <td>
+                        <div class="d-flex flex-column">
+                            <button type="button" class="btn btn-info my-2" data-toggle="modal"
+                        data-target="#modalForm" onclick="editData(`' . $slug . '`)"><i class="fa fa-pencil"></i> Edit</button>
+                            <button type="button" class="btn btn-danger my-2" data-toggle="modal"
+                        data-target="#modalDeleteComponent" onclick="deleteData(`' . $data->id . '`)"><i class="fa fa-trash"></i> Delete</button>
+                        </div>
+                    </td>
+                    ';
+                })
+                ->addColumn('image', function ($data) {
+                    return '
+                    <td>
+                        <div class="row">
+                            <img src="' . asset($data->image) . '" />
+                        </div>
+                    </td>
+                    ';
+                })
+                ->rawColumns(['action', 'image'])
+                ->make(true);
+        }
+
+        return view('admin.articles.index');
     }
 
     /**
@@ -44,18 +73,14 @@ class ArticleController extends Controller
             'image' => 'required',
         ]);
 
-        // $article = new Article();
-        // $article->title=$request->input('title');
-        // $article->save(); //cara lama
-
         Article::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'slug' => Str::slug($request->input('title')),
             'image' => $this->imageServices->uploadImage($request->file('image')),
         ]);
-        
-        return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
+
+        return response()->json(['message' => 'Data Berhasil Ditambahkan!']);
     }
 
     /**
@@ -63,7 +88,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('article', compact('article'));
+        return response()->json([
+            'data' => $article,
+        ]);
     }
 
     /**
@@ -71,7 +98,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-
+        return response()->json([
+            'data' => $article,
+        ]);
     }
 
     /**
@@ -79,23 +108,23 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-
         $article->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'slug' => Str::slug($request->input('title')),
-            'image' => $request->file('image')!=null ? $this->imageServices->uploadImage($request->file('image')):$article->image,
+            'image' => $request->file('image') != null ? $this->imageServices->uploadImage($request->file('image')) : $article->image,
         ]);
-        return response()->json(['message'=>'success']);
+
+        return response()->json(['message' => 'Data Berhasil Diubah!']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($article)
-    {   
+    {
         Article::find($article)->delete();
 
-        return redirect()->back()->with(['delete' => 'Data Berhasil Dihapus!']);
+        return response()->json(['message' => 'Data Berhasil Dihapus!']);
     }
 }
