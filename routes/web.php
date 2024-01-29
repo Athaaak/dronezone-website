@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
@@ -43,6 +44,7 @@ Route::middleware(['admin'])->group(function () {
         Route::resources([
             'dashboard' => DashboardController::class,
             'articles' => ArticleController::class,
+            'portfolio' => PortfolioController::class,
         ]);
     });
 });
