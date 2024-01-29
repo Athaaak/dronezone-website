@@ -11,3 +11,16 @@
 .bg-gray {
     background-color: #f6f6f6;
 }
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.file-input {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}

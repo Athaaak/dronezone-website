@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\Provider\ProviderController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -51,7 +52,7 @@ Route::middleware(['admin'])->group(function () {
 
 Route::middleware(['provider'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role provider
-    Route::get('/dashboard-provider', [App\Http\Controllers\ProviderController::class, 'index'])->name('dashboard-provider');
+    Route::get('/dashboard-provider', [ProviderController::class, 'index'])->name('dashboard-provider');
 });
 
 
