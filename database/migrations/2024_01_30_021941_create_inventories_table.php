@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('spesification');
             $table->string('detail_inventory');
             $table->string('special_feature');
+            $table->text('photo');
             $table->unsignedBigInteger('provider_id');
             $table->foreign('provider_id')->references('id')->on('providers');
             $table->timestamps();

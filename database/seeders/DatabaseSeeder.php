@@ -33,5 +33,11 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'role' => 'provider'
         ]);
+
+        \App\Models\Admin::factory(1)->create();
+        \App\Models\Provider::factory(1)->create();
+        \App\Models\Portfolio::factory(10)->create();
+        \App\Models\Inventory::factory(10)->create();
+        \App\Models\Article::factory(10)->create();
     }
 }

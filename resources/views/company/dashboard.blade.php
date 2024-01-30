@@ -15,27 +15,27 @@
                     <div class="col-md-3">
                         <div class="d-flex flex-column gap-2">
                             <div>
-                                <h5 class="fw-bold">ToyroadDrone</h5>
-                                <span>Profesional Pilot</span>
+                                <h5 class="fw-bold">{{ $user->name }}</h5>
+                                <span>{{ $user->provider->division ?? '-' }}</span>
                             </div>
                             <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
                                 class="rounded-2" />
                             <div>
                                 <h5 class="fw-bold">Area Coverage</h5>
-                                <span>Dukuh Kupang</span>
+                                <span>{{ $user->provider->district ?? '-' }}</span>
                             </div>
                             <div>
                                 <h5 class="fw-bold">Address</h5>
-                                <span>JL. Gubeng Airlangga</span>
+                                <span>{{ $user->provider->address_provider ?? '-' }}</span>
                             </div>
-                            <div>
+                            <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Contact</h5>
-                                <span>+6282345678990</span>
-                                <span>yourmail@mail.com</span>
+                                <span>{{ $user->provider->phone_number ?? '-' }}</span>
+                                <span>{{ $user->email ?? '-' }}</span>
                             </div>
                             <div>
                                 <h5 class="fw-bold">Date Created</h5>
-                                <span>Monday, 3 July 2023</span>
+                                <span>{{ $user->created_at ?? '-' }}</span>
                             </div>
                         </div>
                     </div>
@@ -46,10 +46,7 @@
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Description</h5>
-                                <span>ToyroadDrone is one of best Drone Provider located in centre of Surabaya. Elevate your
-                                    storytelling with our high-resolution camera drones. From sweeping landscapes to
-                                    detailed inspections, our drones empower you to capture every detail with stunning
-                                    clarity. Say goodbye to ordinary, and embrace extraordinary imagery!</span>
+                                <span>{{ $user->provider->description ?? '-' }}</span>
                             </div>
                         </div>
                         <div class="d-flex flex-column border border-2 mt-4 pl-4">
@@ -58,32 +55,17 @@
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Portfolio</h5>
-                                <div class="d-flex flex-row gap-3">
-                                    <div class="d-flex flex-column">
-                                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                            class="rounded-2" width="130" />
-                                        <span>Photo</span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                            class="rounded-2" width="130" />
-                                        <span>Photo</span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                            class="rounded-2" width="130" />
-                                        <span>Photo</span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                            class="rounded-2" width="130" />
-                                        <span>Photo</span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                            class="rounded-2" width="130" />
-                                        <span>Photo</span>
-                                    </div>
+                                <div class="d-flex flex-row gap-3 overflow-scroll">
+                                    @forelse ($user->provider->portfolio as $key => $item)
+                                        @if ($key < 5)
+                                            <div class="d-flex flex-column">
+                                                <img src="{{ $item->photo }}" class="rounded-2" width="130" />
+                                                <span>{{ $item->title }}</span>
+                                            </div>
+                                        @endif
+                                    @empty
+                                        <span>Porfolio not found</span>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>
@@ -93,22 +75,17 @@
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Inventory</h5>
-                                <div class="d-flex flex-row gap-3">
-                                    <div class="d-flex flex-column">
-                                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                            class="rounded-2" width="130" />
-                                        <span>Photo</span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                            class="rounded-2" width="130" />
-                                        <span>Photo</span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                            class="rounded-2" width="130" />
-                                        <span>Photo</span>
-                                    </div>
+                                <div class="d-flex flex-row gap-3 overflow-scroll">
+                                    @forelse ($user->provider->inventory as $key => $item)
+                                        @if ($key < 5)
+                                            <div class="d-flex flex-column">
+                                                <img src="{{ $item->photo }}" class="rounded-2" width="130" />
+                                                <span>{{ $item->title }}</span>
+                                            </div>
+                                        @endif
+                                    @empty
+                                        <span>Inventory not found</span>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>

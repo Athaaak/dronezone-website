@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Provider;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -23,21 +24,12 @@ class DashboardController extends Controller
                     return '
                     <td>
                         <div class="d-flex flex-column">
-                            <a href="' . route('dashboard.edit') . '" class="btn btn-info my-2">Setting</a>
+                            <a href="' . route('dashboard.edit', $data->id) . '" class="btn btn-success my-2">Setting</a>
                         </div>
                     </td>
                     ';
                 })
-                ->addColumn('image', function ($data) {
-                    return '
-                    <td>
-                        <div class="row">
-                            <img src="' . asset($data->image) . '" />
-                        </div>
-                    </td>
-                    ';
-                })
-                ->rawColumns(['action', 'image'])
+                ->rawColumns(['action'])
                 ->make(true);
         }
 
@@ -73,7 +65,9 @@ class DashboardController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::with(['provider' => ['portfolio', 'inventory']])->where('id', $id)->first();
+
+        return view('company.dashboard', compact('user'));
     }
 
     /**

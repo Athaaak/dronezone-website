@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->text('image');
             $table->string('slug');
+            $table->unsignedBigInteger('admin_id');
+            $table->foreign('admin_id')->references('id')->on('admins');
             $table->timestamps();
         });
     }

@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('providers', function (Blueprint $table) {
+        Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->string('division');
-            $table->string('address_provider');
-            $table->string('phone_number');
+            $table->string('title');
             $table->text('description');
-            $table->string('district');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->text('photo');
+            $table->text('video_url');
+            $table->unsignedBigInteger('provider_id');
+            $table->foreign('provider_id')->references('id')->on('providers');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('providers');
+        Schema::dropIfExists('portfolios');
     }
 };
