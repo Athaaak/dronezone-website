@@ -10,85 +10,42 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-sm-8">
+                        <div class="col-sm-6">
                             <h2>Provider <b>List</b></h2>
                         </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-info add-new" data-toggle="modal" data-target="#modalForm"
-                                id="btn-add-modal"><i class="fa fa-plus"></i> Add
-                                New</button>
+                        <div class="col-sm-6">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-info active">
+                                    <input type="radio" name="status" value="all" checked="checked"> All
+                                </label>
+                                <label class="btn btn-success">
+                                    <input type="radio" name="status" value="active"> Active
+                                </label>
+                                <label class="btn btn-warning">
+                                    <input type="radio" name="status" value="inactive"> Inactive
+                                </label>
+                                <label class="btn btn-danger">
+                                    <input type="radio" name="status" value="expired"> Expired
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @elseif($message = Session::get('delete'))
-                    <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @endif
-                <table id="data-table" class="table table-bordered">
+                <table id="data-table" class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Photo</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Actions</th>
+                            <th>#</th>
+                            <th>Domain</th>
+                            <th>Created&nbsp;On</th>
+                            <th>Status</th>
+                            <th>Server&nbsp;Location</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 </table>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="modalFormTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Form Articles</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <form method="POST" enctype="multipart/form-data" name="modal-form" id="modal-form">
-                    @csrf
-                    <div class="modal-body">
-                        <img id="output" src="" width="30%" />
-                        <div class="mb-3 form-group">
-                            <label class="form-label" for="customFile">Photos</label>
-                            <input accept="image/*" onchange="loadFile(event)" type="file" class="form-control"
-                                name="image" id="image" />
-                        </div>
-                        <div class="mb-3 form-group">
-                            <label for="exampleInputPassword1" class="form-label">Article
-                                Title</label>
-                            <input type="text" class="form-control" id="title" name="title"
-                                placeholder="Masukkan Judul Artikel">
-                        </div>
-                        <div class="mb-3 form-group">
-                            <label class="form-label">
-                                Content</label>
-                            <textarea class="form-control" rows="5" name="description" id="description"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                        <button type="button" class="btn btn-primary" id="btn-add">Add</button>
-                        <button type="button" class="btn btn-success d-none" id="btn-update">Update</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    @include('components.modal.delete')
 @endsection
 @section('scripts')
     <script type="text/javascript">
@@ -122,7 +79,7 @@
                 processing: true,
                 serverSide: true,
                 searching: true,
-                ajax: "{{ route('articles.index') }}",
+                ajax: "{{ route('dashboard.index') }}",
                 columns: [{
                         data: 'image',
                         name: 'image',
