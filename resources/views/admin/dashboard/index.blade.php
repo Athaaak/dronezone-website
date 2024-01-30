@@ -17,7 +17,7 @@
                             <div class="d-flex flex-row align-items-center gap-2">
                                 <small class="fw-bold">Sort</small>
                                 <select class="form-select" name="district" id="district">
-                                    <option disabled selected>District</option>
+                                    <option disabled selected>Select District</option>
                                 </select>
                             </div>
                         </div>

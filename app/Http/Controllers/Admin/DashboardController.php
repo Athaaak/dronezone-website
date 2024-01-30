@@ -70,7 +70,7 @@ class DashboardController extends Controller
     {
         $user = User::with(['provider' => ['portfolio', 'inventory']])->where('id', $id)->first();
 
-        return view('company.dashboard', compact('user'));
+        return view('provider.dashboard.index', compact('user'));
     }
 
     /**

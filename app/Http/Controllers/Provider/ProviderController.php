@@ -22,14 +22,14 @@ class ProviderController extends Controller
             $user_id = $request->id;
             $user = User::with(['provider'])->where('id', $user_id)->first();
 
-            return view('provider.dashboard.index', compact('user'));
+            return view('provider.dashboard.edit', compact('user'));
         }
 
         $user = Auth::user();
 
         $user = User::with(['provider'])->where('id', $user->id)->first();
 
-        return view('provider.dashboard.index', compact('user'));
+        return view('provider.dashboard.edit', compact('user'));
     }
 
     public function update(Request $request, Provider $provider)
