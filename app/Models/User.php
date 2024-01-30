@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function provider()
     {
-        return $this->hasOne(Provider::class);
+        return $this->hasMany(Provider::class);
     }
 
     protected function createdAt(): Attribute

@@ -16,7 +16,10 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::where('role', 'provider')->latest();
+            $data = User::select('users.id', 'users.email', 'users.created_at', 'providers.company_name', 'providers.district', 'users.role')->leftJoin('providers', 'providers.user_id', '=', 'users.id')
+                ->where('role', 'provider')
+                ->where('district', 'LIKE', '%' . $request->district . '%')
+                ->latest();
 
             return DataTables::eloquent($data)
                 ->addIndexColumn()

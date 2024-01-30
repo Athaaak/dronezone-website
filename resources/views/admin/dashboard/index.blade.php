@@ -13,20 +13,12 @@
                         <div class="col-sm-6">
                             <h2>Provider <b>List</b></h2>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-info active">
-                                    <input type="radio" name="status" value="all" checked="checked"> All
-                                </label>
-                                <label class="btn btn-success">
-                                    <input type="radio" name="status" value="active"> Active
-                                </label>
-                                <label class="btn btn-warning">
-                                    <input type="radio" name="status" value="inactive"> Inactive
-                                </label>
-                                <label class="btn btn-danger">
-                                    <input type="radio" name="status" value="expired"> Expired
-                                </label>
+                        <div class="col-sm-3">
+                            <div class="d-flex flex-row align-items-center gap-2">
+                                <small class="fw-bold">Sort</small>
+                                <select class="form-select" name="district" id="district">
+                                    <option disabled selected>District</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -52,14 +44,31 @@
 
         $(document).ready(function() {
             initializeTable()
+            fetchDistrict()
         })
+
+        $('#district').change(function() {
+            reinitializeTable()
+        })
+
+        function fetchDistrict() {
+            fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/3578.json`)
+                .then(response => response.json())
+                .then((data) => {
+                    data.map((item) => {
+                        $('#district').append(
+                            `<option id="${item.id}">${item.name}</option>`
+                        )
+                    })
+                });
+        }
 
         function initializeTable() {
             table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
                 searching: true,
-                ajax: "{{ route('dashboard.index') }}",
+                ajax: `{{ route('dashboard.index') }}?district=${$('#district').val()}`,
                 columns: [{
                         data: 'email',
                         name: 'email',
