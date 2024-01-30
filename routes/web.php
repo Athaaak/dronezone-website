@@ -50,6 +50,12 @@ Route::middleware(['admin'])->group(function () {
     });
 });
 
+Route::middleware(['role:admin,provider'])->group(function () {
+    Route::get('/company-profile', [ProviderController::class, 'index'])->name('company-profile');
+    Route::put('/update-company-profile/{provider}', [ProviderController::class, 'update'])->name('update-company-profile');
+});
+
+
 Route::middleware(['provider'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role provider
     Route::get('/dashboard-provider', [ProviderController::class, 'index'])->name('dashboard-provider');

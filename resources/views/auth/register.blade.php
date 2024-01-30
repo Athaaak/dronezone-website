@@ -17,44 +17,46 @@
                     .st01 {
                         fill: #fff;
                     }
-
                 </style>
                 <path class="st01"
                     d="m126 302.2c-2.3 0.7-5.7 0.2-7.7-1.2l-105-71.6c-2-1.3-3.7-4.4-3.9-6.7l-9.4-126.7c-0.2-2.4 1.1-5.6 2.8-7.2l93.2-86.4c1.7-1.6 5.1-2.6 7.4-2.3l125.6 18.9c2.3 0.4 5.2 2.3 6.4 4.4l63.5 110.1c1.2 2 1.4 5.5 0.6 7.7l-46.4 118.3c-0.9 2.2-3.4 4.6-5.7 5.3l-121.4 37.4zm63.4-102.7c2.3-0.7 4.8-3.1 5.7-5.3l19.9-50.8c0.9-2.2 0.6-5.7-0.6-7.7l-27.3-47.3c-1.2-2-4.1-4-6.4-4.4l-53.9-8c-2.3-0.4-5.7 0.7-7.4 2.3l-40 37.1c-1.7 1.6-3 4.9-2.8 7.2l4.1 54.4c0.2 2.4 1.9 5.4 3.9 6.7l45.1 30.8c2 1.3 5.4 1.9 7.7 1.2l52-16.2z" />
             </svg>
         </div>
-        <form action="{{ route('register-provider')}}" class="log-in" autocomplete="off" method="POST">
+        <form action="{{ route('register-provider') }}" class="log-in" autocomplete="off" method="POST">
             @csrf
             <h4>Register</span></h4>
             <p>Selamat datang di Dronezone! <br>Silahkan masukkan username dan password anda.</br></p>
             <div class="floating-label">
                 <input placeholder="Name" type="text" name="name" id="name" autocomplete="off">
-                <label for="name">Name:</label>
+                <label for="name">Username:</label>
                 <div class="icon">
-                    <svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xml:space="preserve"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <style type="text/css">
-                            .st0 {
-                                fill: none;
-                            }
-
-                            .st1 {
-                                fill: #010101;
-                            }
-
-                        </style>
-                        <rect class="st0" width="24" height="24" />
-                        <path class="st1" d="M19,21H5V9h14V21z M6,20h12V10H6V20z" />
-                        <path class="st1"
-                            d="M16.5,10h-1V7c0-1.9-1.6-3.5-3.5-3.5S8.5,5.1,8.5,7v3h-1V7c0-2.5,2-4.5,4.5-4.5s4.5,2,4.5,4.5V10z" />
-                        <path class="st1"
-                            d="m12 16.5c-0.8 0-1.5-0.7-1.5-1.5s0.7-1.5 1.5-1.5 1.5 0.7 1.5 1.5-0.7 1.5-1.5 1.5zm0-2c-0.3 0-0.5 0.2-0.5 0.5s0.2 0.5 0.5 0.5 0.5-0.2 0.5-0.5-0.2-0.5-0.5-0.5z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101" id="user">
+                        <path
+                            d="M50.4 54.5c10.1 0 18.2-8.2 18.2-18.2S60.5 18 50.4 18s-18.2 8.2-18.2 18.2 8.1 18.3 18.2 18.3zm0-31.7c7.4 0 13.4 6 13.4 13.4s-6 13.4-13.4 13.4S37 43.7 37 36.3s6-13.5 13.4-13.5zM18.8 83h63.4c1.3 0 2.4-1.1 2.4-2.4 0-12.6-10.3-22.9-22.9-22.9H39.3c-12.6 0-22.9 10.3-22.9 22.9 0 1.3 1.1 2.4 2.4 2.4zm20.5-20.5h22.4c9.2 0 16.7 6.8 17.9 15.7H21.4c1.2-8.9 8.7-15.7 17.9-15.7z">
+                        </path>
                     </svg>
                 </div>
                 @error('name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="floating-label">
+                <input placeholder="Company Name" type="text" name="company_name" id="company_name"
+                    autocomplete="off">
+                <label for="company_name">Company Name:</label>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" id="company">
+                        <path fill="#2b3344"
+                            d="M21.5,21H20V7.5A.49.49,0,0,0,19.66,7L16,5.47V21H15V3.5a.5.5,0,0,0-.5-.5h-9a.5.5,0,0,0-.5.5V21H3.5a.5.5,0,0,0,0,1h18a.5.5,0,0,0,0-1Zm-4-12h1a.5.5,0,0,1,.5.5.51.51,0,0,1-.5.5h-1a.51.51,0,0,1-.5-.5A.5.5,0,0,1,17.5,9Zm0,3h1a.5.5,0,0,1,0,1h-1a.5.5,0,0,1,0-1Zm0,3h1a.51.51,0,0,1,.5.5.5.5,0,0,1-.5.5h-1a.5.5,0,0,1-.5-.5A.51.51,0,0,1,17.5,15Zm0,3h1a.5.5,0,0,1,0,1h-1a.5.5,0,0,1,0-1ZM11,6h1a.5.5,0,1,1,0,1H11a.5.5,0,0,1,0-1Zm0,3h1a.5.5,0,1,1,0,1H11a.5.5,0,0,1,0-1Zm0,3h1a.5.5,0,1,1,0,1H11a.5.5,0,0,1,0-1Zm0,3h1a.5.5,0,1,1,0,1H11a.5.5,0,0,1,0-1ZM7.94,6H9A.5.5,0,0,1,9,7h-1a.5.5,0,0,1,0-1Zm0,3H9a.5.5,0,0,1,0,1h-1a.5.5,0,0,1,0-1Zm0,3H9a.5.5,0,0,1,0,1h-1a.5.5,0,0,1,0-1Zm0,3H9a.5.5,0,0,1,0,1h-1a.5.5,0,0,1,0-1Zm2.56,6V19h-1v2h-1V18.47A.5.5,0,0,1,9,18h2a.5.5,0,0,1,.5.5V21Z">
+                        </path>
+                    </svg>
+                </div>
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
             </div>
             <div class="floating-label">
@@ -67,7 +69,6 @@
                             .st0 {
                                 fill: none;
                             }
-
                         </style>
                         <g transform="translate(0 -952.36)">
                             <path
@@ -77,9 +78,9 @@
                     </svg>
                 </div>
                 @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
             </div>
             <div class="floating-label">
@@ -96,7 +97,6 @@
                             .st1 {
                                 fill: #010101;
                             }
-
                         </style>
                         <rect class="st0" width="24" height="24" />
                         <path class="st1" d="M19,21H5V9h14V21z M6,20h12V10H6V20z" />
@@ -107,9 +107,9 @@
                     </svg>
                 </div>
                 @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
             </div>
 
@@ -128,7 +128,6 @@
                             .st1 {
                                 fill: #010101;
                             }
-
                         </style>
                         <rect class="st0" width="24" height="24" />
                         <path class="st1" d="M19,21H5V9h14V21z M6,20h12V10H6V20z" />
@@ -139,9 +138,9 @@
                     </svg>
                 </div>
                 @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
             </div>
             <button type="submit">Register</button>

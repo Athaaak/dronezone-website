@@ -20,11 +20,15 @@ class ProviderFactory extends Factory
         $user = User::where('role', 'provider')->first();
 
         return [
+            'company_name' => fake()->company(),
+            'provider_email' => fake()->email(),
+            'contact' => fake()->name(),
             'division' => 'Profesional',
             'address_provider' => fake()->address(),
             'phone_number' => fake()->phoneNumber(),
             'description' => fake()->realText,
-            'district' => 'Sukolilo',
+            'district' => 'SUKOLILO',
+            'photo' => fake()->imageUrl(640, 640),
             'user_id' => $user->id
         ];
     }

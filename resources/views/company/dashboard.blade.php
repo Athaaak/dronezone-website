@@ -15,11 +15,10 @@
                     <div class="col-md-3">
                         <div class="d-flex flex-column gap-2">
                             <div>
-                                <h5 class="fw-bold">{{ $user->name }}</h5>
+                                <h5 class="fw-bold">{{ $user->provider->company_name }}</h5>
                                 <span>{{ $user->provider->division ?? '-' }}</span>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
-                                class="rounded-2" />
+                            <img src="{{ $user->provider->photo }}" class="rounded-2" />
                             <div>
                                 <h5 class="fw-bold">Area Coverage</h5>
                                 <span>{{ $user->provider->district ?? '-' }}</span>
@@ -42,7 +41,9 @@
                     <div class="col-md-9">
                         <div class="d-flex flex-column">
                             <div class="d-flex align-self-end">
-                                <i class="fa fa-edit fs-4"></i>
+                                <a class="text-secondary" href="{{ route('company-profile') }}?id={{ $user->id }}">
+                                    <i class="fa fa-edit fs-4"></i>
+                                </a>
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Description</h5>

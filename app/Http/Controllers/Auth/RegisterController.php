@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Provider;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -72,13 +73,24 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'provider'
+        ]);
+
+        Provider::create([
+            'company_name' => $request->company_name,
+            'division' => '-',
+            'address_provider' => '-',
+            'phone_number' => '-',
+            'description' => '-',
+            'district' => '-',
+            'user_id' => $user->id
         ]);
 
         return redirect()->route('login');
