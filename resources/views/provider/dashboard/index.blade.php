@@ -52,7 +52,10 @@
                         </div>
                         <div class="d-flex flex-column border border-2 mt-4 pl-4">
                             <div class="d-flex align-self-end">
-                                <i class="fa fa-edit fs-4"></i>
+                                <a class="text-secondary"
+                                    href="{{ route('portfolio.index') }}?provider_id={{ $user->provider->id }}">
+                                    <i class="fa fa-edit fs-4"></i>
+                                </a>
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Portfolio</h5>
@@ -72,7 +75,9 @@
                         </div>
                         <div class="d-flex flex-column border border-2 pl-4">
                             <div class="d-flex align-self-end">
-                                <i class="fa fa-edit fs-4"></i>
+                                <a class="text-secondary" href="{{ route('portfolio.index') }}">
+                                    <i class="fa fa-edit fs-4"></i>
+                                </a>
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Inventory</h5>

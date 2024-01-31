@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Provider\PortfolioController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Api\ApiPortfolioController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
@@ -44,8 +45,6 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/company-profile', [CompanyController::class, 'index'])->name('company-proile');
         Route::resources([
             'dashboard' => DashboardController::class,
-            'articles' => ArticleController::class,
-            'portfolio' => PortfolioController::class,
         ]);
     });
 });
@@ -53,6 +52,11 @@ Route::middleware(['admin'])->group(function () {
 Route::middleware(['role:admin,provider'])->group(function () {
     Route::get('/company-profile', [ProviderController::class, 'index'])->name('company-profile');
     Route::put('/update-company-profile/{provider}', [ProviderController::class, 'update'])->name('update-company-profile');
+
+    Route::resources([
+        'articles' => ArticleController::class,
+        'portfolio' => PortfolioController::class,
+    ]);
 });
 
 

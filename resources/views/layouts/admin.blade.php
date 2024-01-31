@@ -59,6 +59,11 @@
             return `<div class="spinner-border text-light spinner-border-sm" role="status">
         </div>`
         }
+
+        function loaderPrimary() {
+            return `<div class="spinner-border text-primary spinner-border-sm" role="status">
+        </div>`
+        }
     </script>
 </body>
 
