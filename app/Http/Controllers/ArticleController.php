@@ -80,7 +80,7 @@ class ArticleController extends Controller
             'image' => $this->imageServices->uploadImage($request->file('image')),
         ]);
 
-        return response()->json(['message' => 'Data Berhasil Ditambahkan!']);
+        return response()->json(['message' => 'Article was successfuly added!']);
     }
 
     /**
@@ -115,7 +115,7 @@ class ArticleController extends Controller
             'image' => $request->file('image') != null ? $this->imageServices->uploadImage($request->file('image')) : $article->image,
         ]);
 
-        return response()->json(['message' => 'Data Berhasil Diubah!']);
+        return response()->json(['message' => 'Article was successfuly updated!']);
     }
 
     /**
@@ -125,6 +125,6 @@ class ArticleController extends Controller
     {
         Article::find($article)->delete();
 
-        return response()->json(['message' => 'Data Berhasil Dihapus!']);
+        return response()->json(['message' => 'Article was successfuly deleted!']);
     }
 }
