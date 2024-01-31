@@ -338,7 +338,7 @@
                     'id': selectedId,
                 },
                 success: function(data) {
-                    $(this).html('Hapus')
+                    $('#btn-delete').html('Delete')
                     $("[data-dismiss=modal]").trigger({
                         type: "click"
                     });
@@ -346,7 +346,7 @@
                     getPortfolio()
                 },
                 error: function(request, msg, error) {
-                    $(this).html('Hapus')
+                    $('#btn-delete').html('Delete')
 
                 }
             });
