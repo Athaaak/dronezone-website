@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiInventoryController;
 use App\Http\Controllers\Api\ApiPortfolioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('/portfolio')->group(function () {
     Route::get('/get-portfolio', [ApiPortfolioController::class, 'getPortfolio'])->name('portfolio.get');
+});
+
+Route::prefix('/inventory')->group(function () {
+    Route::get('/get-inventory', [ApiInventoryController::class, 'getInventory'])->name('inventory.get');
 });

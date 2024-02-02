@@ -8,6 +8,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\Provider\InventoryController;
 use App\Http\Controllers\Provider\ProviderController;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,11 +32,10 @@ Route::get('/', [HomepageController::class, 'homepage']);
 Route::get('/explore', [HomepageController::class, 'explore'])->name('explore');
 Route::get('/explore-general', [HomepageController::class, 'exploregeneral'])->name('general');
 Route::get('/explore-professional', [HomepageController::class, 'exploreprofessional'])->name('professional');
-Route::get('/articles', [HomepageController::class, 'article'])->name('article');
+Route::get('/article', [HomepageController::class, 'article'])->name('article');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Auth::routes();
-
 
 Route::middleware(['admin'])->group(function () {
     // Semua route yang ada didalam sini hanya bisa diakses oleh user dengan role admin
@@ -56,6 +56,7 @@ Route::middleware(['role:admin,provider'])->group(function () {
     Route::resources([
         'articles' => ArticleController::class,
         'portfolio' => PortfolioController::class,
+        'inventory' => InventoryController::class,
     ]);
 });
 
