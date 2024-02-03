@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('/portfolio')->group(function () {
     Route::get('/get-portfolio', [ApiPortfolioController::class, 'getPortfolio'])->name('portfolio.get');
+    Route::get('/admin-datatable', [ApiPortfolioController::class, 'adminDatatable'])->name('portfolio.admin-datatable');
 });
 
 Route::prefix('/inventory')->group(function () {

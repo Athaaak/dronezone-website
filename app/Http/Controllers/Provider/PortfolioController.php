@@ -27,15 +27,19 @@ class PortfolioController extends Controller
     {
         if (Auth::user()->role != 'provider') {
             $provider_id = $request->provider_id;
+
+            if ($provider_id == null) {
+                return view('admin.portfolio.index');
+            }
             $provider = Provider::with(['user'])->where('id', $provider_id)->first();
 
-            return view('admin.portfolio.index', compact('provider'));
+            return view('admin.portfolio.detail', compact('provider'));
         }
 
         $auth = Auth::user();
         $provider = Provider::with(['user'])->where('user_id', $auth->id)->first();
 
-        return view('admin.portfolio.index');
+        return view('admin.portfolio.detail');
     }
 
     /**
