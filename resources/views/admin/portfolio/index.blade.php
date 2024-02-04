@@ -11,7 +11,7 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>Provider <b>List</b></h2>
+                            <h2>Portfolio <b>List</b></h2>
                         </div>
                         <div class="col-sm-3">
                             <div class="d-flex flex-row align-items-center gap-2">

@@ -25,15 +25,20 @@ class InventoryController extends Controller
     {
         if (Auth::user()->role != 'provider') {
             $provider_id = $request->provider_id;
+
+            if ($provider_id == null) {
+                return view('admin.inventory.index');
+            }
+
             $provider = Provider::with(['user'])->where('id', $provider_id)->first();
 
-            return view('admin.inventory.index', compact('provider'));
+            return view('admin.inventory.detail', compact('provider'));
         }
 
         $auth = Auth::user();
         $provider = Provider::with(['user'])->where('user_id', $auth->id)->first();
 
-        return view('admin.inventory.index');
+        return view('admin.inventory.detail');
     }
 
     /**

@@ -30,7 +30,7 @@ class ApiPortfolioController extends Controller
                     return '
                     <td>
                         <div class="d-flex flex-column">
-                            <a href="' . route('portfolio.index') . '?provider_id=' . $data->provider_id . '" class="btn btn-warning my-2">Update</a>
+                            <a href="' . route('portfolio.index') . '?provider_id=' . $data->provider_id . '" class="btn btn-warning my-2">Edit</a>
                         </div>
                     </td>
                     ';

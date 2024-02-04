@@ -27,4 +27,5 @@ Route::prefix('/portfolio')->group(function () {
 
 Route::prefix('/inventory')->group(function () {
     Route::get('/get-inventory', [ApiInventoryController::class, 'getInventory'])->name('inventory.get');
+    Route::get('/admin-datatable', [ApiInventoryController::class, 'adminDatatable'])->name('inventory.admin-datatable');
 });
