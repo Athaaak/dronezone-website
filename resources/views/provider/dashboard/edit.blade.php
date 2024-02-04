@@ -11,16 +11,20 @@
                 <h4>Company Profile</h4>
             </div>
             <form id="form-data" enctype="multipart/form-data">
-                <input type="hidden" id="id" name="id" value="{{ $user->provider->id }}" />
+                <input type="hidden" id="id" name="id" value="{{ $user->provider->id ?? '' }}" />
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="d-flex flex-column gap-2">
                                 <div>
                                     <h5 class="fw-bold">Company Name</h5>
-                                    <span>{{ $user->provider->company_name ?? '-' }}</span>
+                                    @if ($user->provider == null)
+                                        <input class="form-control form-control-sm" name="company_name" />
+                                    @else
+                                        <span>{{ $user->provider->company_name ?? '-' }}</span>
+                                    @endif
                                 </div>
-                                <img id="output" src="{{ $user->provider->photo }}" class="rounded-2" />
+                                <img id="output" src="{{ $user->provider->photo ?? '' }}" class="rounded-2" />
                                 <div class="file-input-wrapper btn btn-sm btn-light border border-1">
                                     Upload
                                     <input accept="image/*" onchange="loadFile(event)" type="file" name="photo"
@@ -33,14 +37,27 @@
                                 </div>
                                 <div>
                                     <h5 class="fw-bold">Category</h5>
-                                    <select class="form-select" name="division">
-                                        <option value="Profesional"
-                                            {{ $user->provider->division == 'Profesional' ? 'selected' : '' }}>Profesional
-                                        </option>
-                                        <option value="Umum" {{ $user->provider->division == 'Umum' ? 'selected' : '' }}>
-                                            Umum
-                                        </option>
-                                    </select>
+                                    @if ($user->provider == null)
+                                        <select class="form-select" name="division">
+                                            <option value="Profesional">
+                                                Profesional
+                                            </option>
+                                            <option value="Umum">
+                                                Umum
+                                            </option>
+                                        </select>
+                                    @else
+                                        <select class="form-select" name="division">
+                                            <option value="Profesional"
+                                                {{ $user->provider->division == 'Profesional' ? 'selected' : '' }}>
+                                                Profesional
+                                            </option>
+                                            <option value="Umum"
+                                                {{ $user->provider->division == 'Umum' ? 'selected' : '' }}>
+                                                Umum
+                                            </option>
+                                        </select>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -49,27 +66,35 @@
                                 <div class="col-md-12">
                                     <div class="d-flex flex-column">
                                         <span class="fw-bold">Description</span>
-                                        <textarea class="form-control" name="description">{{ $user->provider->description }}</textarea>
+                                        <textarea class="form-control" name="description">{{ $user->provider->description ?? '' }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="d-flex flex-column">
                                         <span class="fw-bold">Address</span>
-                                        <textarea class="form-control" name="address">{{ $user->provider->address_provider }}</textarea>
+                                        <textarea class="form-control" name="address">{{ $user->provider->address_provider ?? '' }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="d-flex flex-column">
                                         <span class="fw-bold">Contact</span>
                                         <input class="form-control form-control-sm" name="contact"
-                                            value="{{ $user->provider->contact }}" />
+                                            value="{{ $user->provider->contact ?? '' }}" />
                                     </div>
                                 </div>
+                                @if ($user->provider == null)
+                                    <div class="col-md-5">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold">Phone Number</span>
+                                            <input class="form-control form-control-sm" name="phone_number" />
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="col-md-5">
                                     <div class="d-flex flex-column">
                                         <span class="fw-bold">Company Email</span>
                                         <input class="form-control form-control-sm" name="email"
-                                            value="{{ $user->provider->provider_email }}" />
+                                            value="{{ $user->provider->provider_email ?? '' }}" />
                                     </div>
                                 </div>
                                 <div class="d-flex align-self-end">
@@ -100,7 +125,7 @@
         };
 
         function fetchDistrict() {
-            let district = "{{ $user->provider->district }}"
+            let district = "{{ $user->provider->district ?? '' }}"
             fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/3578.json`)
                 .then(response => response.json())
                 .then((data) => {
@@ -129,7 +154,7 @@
             var id = $('#id').val()
 
             $.ajax({
-                url: `{{ url('/update-company-profile/${id}') }}`,
+                url: `{{ url('/update-company-profile') }}`,
                 type: "POST",
                 dataType: "json",
                 cache: false,

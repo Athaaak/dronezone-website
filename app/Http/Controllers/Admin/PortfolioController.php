@@ -39,7 +39,7 @@ class PortfolioController extends Controller
         $auth = Auth::user();
         $provider = Provider::with(['user'])->where('user_id', $auth->id)->first();
 
-        return view('admin.portfolio.detail');
+        return view('admin.portfolio.detail', compact('provider'));
     }
 
     /**

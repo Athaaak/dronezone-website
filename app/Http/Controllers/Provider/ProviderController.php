@@ -34,16 +34,31 @@ class ProviderController extends Controller
 
     public function update(Request $request, Provider $provider)
     {
-        Provider::find($request->id)
-            ->update([
+        if ($request->id == null) {
+            Provider::create([
                 'contact' => $request->contact,
+                'company_name' => $request->company_name,
                 'provider_email' => $request->email,
                 'division' => $request->division,
                 'description' => $request->description,
-                'address' => $request->address,
+                'address_provider' => $request->address,
+                'phone_number' => $request->phone_number,
                 'district' => $request->district,
+                'user_id' => Auth::user()->id,
                 'photo' => $request->photo != null ? $this->imageServices->uploadImage($request->file('photo')) : $provider->photo,
             ]);
+        } else {
+            Provider::find($request->id)
+                ->update([
+                    'contact' => $request->contact,
+                    'provider_email' => $request->email,
+                    'division' => $request->division,
+                    'description' => $request->description,
+                    'address_provider' => $request->address,
+                    'district' => $request->district,
+                    'photo' => $request->photo != null ? $this->imageServices->uploadImage($request->file('photo')) : $provider->photo,
+                ]);
+        }
 
         return response()->json(['message' => 'Berhasil mengubah provider']);
     }

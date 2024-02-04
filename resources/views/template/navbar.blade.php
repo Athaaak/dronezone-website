@@ -91,7 +91,13 @@
                 <a href="{{ route('accounts.index') }}" class="nav-menu-item"><i
                         class="fas fa-home me-3"></i>Account</a>
             @elseif(Auth::user()->role == 'provider')
-                <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
+                <a href="/dashboard-provider" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
+                <a href="{{ route('portfolio.index') }}" class="nav-menu-item"><i
+                        class="fas fa-home me-3"></i>Portfolio</a>
+                <a href="{{ route('inventory.index') }}" class="nav-menu-item"><i
+                        class="fas fa-home me-3"></i>Inventory</a>
+                <a href="{{ route('accounts.index') }}" class="nav-menu-item"><i
+                        class="fas fa-home me-3"></i>Account</a>
             @endif
         </div>
     </div>

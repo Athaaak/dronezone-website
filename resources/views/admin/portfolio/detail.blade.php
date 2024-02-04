@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Dashboard Admin
+    Portfolio Detail
 @endsection
 
 @section('content')
@@ -45,6 +45,7 @@
                                 <button id="btn-add-modal" class="btn btn-sm btn-success px-4" data-toggle="modal"
                                     data-target="#modalForm" onclick="">Add</button>
                             </div>
+
                             <div id="portfolio-content" class="d-flex flex-column gap-2">
 
                             </div>
@@ -146,41 +147,41 @@
                 success: function(data) {
                     $('#portfolio-content').html('')
                     let pagination = data.links
+                    if (data.data.length > 0) {
+                        pagination.map((item) => {
+                            let html = ``;
 
-                    pagination.map((item) => {
-                        let html = ``;
-
-                        if (item.active == true) {
-                            html = `<li class="page-item active" aria-current="page">
+                            if (item.active == true) {
+                                html = `<li class="page-item active" aria-current="page">
                             <span class="page-link">${item.label}</span>
                             </li>`
-                        } else {
-                            html =
-                                `<li class="page-item"><a class="page-link" href="#" onclick="setPage(${item.label})">${item.label}</a></li>`
-                        }
-
-                        if (item.label.includes('Previous')) {
-                            if (item.active == false) {
+                            } else {
                                 html =
-                                    `<li class="page-item ${item.url == null ? 'disabled' : ''}" ${item.url != null ? `onclick="prevPage()"` : ''}>
+                                    `<li class="page-item"><a class="page-link" href="#" onclick="setPage(${item.label})">${item.label}</a></li>`
+                            }
+
+                            if (item.label.includes('Previous')) {
+                                if (item.active == false) {
+                                    html =
+                                        `<li class="page-item ${item.url == null ? 'disabled' : ''}" ${item.url != null ? `onclick="prevPage()"` : ''}>
                                         <a class="page-link" href="#">Previous</a>
                                     </li>`
+                                }
                             }
-                        }
 
-                        if (item.label.includes('Next')) {
-                            if (item.active == false) {
-                                html =
-                                    `<li class="page-item ${item.url == null ? 'disabled' : ''}" ${item.url != null ? `onclick="nextPage()"` : ''}><a class="page-link" href="#">Next</a></li>`
+                            if (item.label.includes('Next')) {
+                                if (item.active == false) {
+                                    html =
+                                        `<li class="page-item ${item.url == null ? 'disabled' : ''}" ${item.url != null ? `onclick="nextPage()"` : ''}><a class="page-link" href="#">Next</a></li>`
+                                }
                             }
-                        }
 
-                        $('#pagination').append(html)
-                    })
+                            $('#pagination').append(html)
+                        })
 
-                    let html = ''
-                    data.data.map(item => {
-                        html = `
+                        let html = ''
+                        data.data.map(item => {
+                            html = `
                         <div class="d-flex flex-row justify-content-between bg-gray p-2">
                                     <div class="d-flex flex-row gap-3">
                                         <img src="${item.photo}"
@@ -198,8 +199,10 @@
                                     </div>
                                 </div>
                         `
-                        $('#portfolio-content').append(html)
-                    })
+                            $('#portfolio-content').append(html)
+                        })
+                    }
+
                 },
             });
         }
