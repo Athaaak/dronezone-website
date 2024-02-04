@@ -97,9 +97,9 @@ class AccountController extends Controller
             if (Auth::user()->id == $db->user_id) {
                 Auth::logout();
 
-                return response()->json(['message' => 'Provider was successfuly deleted! This account will be logout']);
+                return response()->json(['message' => 'Provider was successfuly deleted! This account will be logout automatically', 'code' => 'provider_remove_self']);
             } else {
-                return response()->json(['message' => 'Provider was successfuly deleted!']);
+                return response()->json(['message' => 'Provider was successfuly deleted!', 'code' => 'admin_remove_provider']);
             }
         } catch (\Throwable $th) {
             //throw $th;

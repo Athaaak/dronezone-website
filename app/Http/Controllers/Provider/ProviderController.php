@@ -60,6 +60,6 @@ class ProviderController extends Controller
                 ]);
         }
 
-        return response()->json(['message' => 'Berhasil mengubah provider']);
+        return response()->json(['message' => 'Provider successfully updated']);
     }
 }

@@ -86,6 +86,12 @@
                         type: "click"
                     });
                     notyf.success(data.message);
+
+                    if (data.code == 'provider_remove_self') {
+                        setTimeout(() => {
+                            window.location.href = "/login";
+                        }, 2000);
+                    }
                 },
                 error: function(request, msg, error) {
                     $('#btn-delete').html('Delete')

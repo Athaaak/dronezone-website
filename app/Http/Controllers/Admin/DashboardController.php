@@ -19,6 +19,7 @@ class DashboardController extends Controller
             $data = User::select('users.id', 'users.email', 'users.created_at', 'providers.company_name', 'providers.district', 'users.role')->leftJoin('providers', 'providers.user_id', '=', 'users.id')
                 ->where('role', 'provider')
                 ->where('district', 'LIKE', '%' . $request->district . '%')
+                ->where('providers.deleted_at', null)
                 ->latest();
 
             return DataTables::eloquent($data)
