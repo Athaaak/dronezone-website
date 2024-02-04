@@ -51,7 +51,7 @@ Route::middleware(['admin'])->group(function () {
 
 Route::middleware(['role:admin,provider'])->group(function () {
     Route::get('/company-profile', [ProviderController::class, 'index'])->name('company-profile');
-    Route::put('/update-company-profile/{provider}', [ProviderController::class, 'update'])->name('update-company-profile');
+    Route::put('/update-company-profile', [ProviderController::class, 'update'])->name('update-company-profile');
 
     Route::resources([
         'articles' => ArticleController::class,

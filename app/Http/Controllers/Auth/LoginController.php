@@ -47,9 +47,9 @@ class LoginController extends Controller
         if (auth()->user()->role == 'provider') {
             $user_id = auth()->user()->id;
 
-            $provider = Provider::where('user_id', $user_id)->where('deleted_at', null)->count();
+            $provider = Provider::where('user_id', $user_id)->where('deleted_at', '!=', null)->count();
 
-            if ($provider == 0) {
+            if ($provider > 0) {
                 Auth::logout();
 
                 return $this->redirectTo = abort(403, 'Account has been removed. Please contact administrator.');
