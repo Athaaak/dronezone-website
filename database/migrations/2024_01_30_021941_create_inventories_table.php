@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('special_feature');
             $table->text('photo');
             $table->unsignedBigInteger('provider_id');
-            $table->foreign('provider_id')->references('id')->on('providers');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

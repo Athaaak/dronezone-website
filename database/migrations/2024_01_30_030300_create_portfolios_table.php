@@ -18,8 +18,9 @@ return new class extends Migration
             $table->text('photo');
             $table->text('video_url');
             $table->unsignedBigInteger('provider_id');
-            $table->foreign('provider_id')->references('id')->on('providers');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
