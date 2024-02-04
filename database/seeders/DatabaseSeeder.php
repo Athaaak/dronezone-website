@@ -43,6 +43,15 @@ class DatabaseSeeder extends Seeder
             'role' => 'provider'
         ]);
 
+        \App\Models\User::factory()->create([
+            'name' => 'provider2',
+            'email' => 'provider2@test.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'), // password
+            'remember_token' => Str::random(10),
+            'role' => 'provider'
+        ]);
+
         \App\Models\Admin::factory(1)->create();
         \App\Models\Provider::factory(1)->create();
         \App\Models\Portfolio::factory(10)->create();

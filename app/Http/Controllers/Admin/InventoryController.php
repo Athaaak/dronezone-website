@@ -38,7 +38,7 @@ class InventoryController extends Controller
         $auth = Auth::user();
         $provider = Provider::with(['user'])->where('user_id', $auth->id)->first();
 
-        return view('admin.inventory.detail');
+        return view('admin.inventory.detail', compact('provider'));
     }
 
     /**
