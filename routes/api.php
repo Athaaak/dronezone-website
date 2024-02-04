@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApiAccountController;
+use App\Http\Controllers\Api\ApiArticleController;
 use App\Http\Controllers\Api\ApiInventoryController;
 use App\Http\Controllers\Api\ApiPortfolioController;
 use Illuminate\Http\Request;
@@ -33,4 +34,8 @@ Route::prefix('/inventory')->group(function () {
 
 Route::prefix('/account')->group(function () {
     Route::get('/datatable', [ApiAccountController::class, 'datatable'])->name('account.datatable');
+});
+
+Route::prefix('/article')->group(function () {
+    Route::get('/get-article', [ApiArticleController::class, 'getArticle'])->name('articles.get');
 });

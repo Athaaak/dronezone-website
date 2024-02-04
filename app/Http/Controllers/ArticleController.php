@@ -19,39 +19,8 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->ajax()) {
-            $data = Article::latest();
-
-            return DataTables::eloquent($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($data) {
-                    $slug = Str::slug($data->title);
-                    return '
-                    <td>
-                        <div class="d-flex flex-column">
-                            <button type="button" class="btn btn-info my-2" data-toggle="modal"
-                        data-target="#modalForm" onclick="editData(`' . $slug . '`)"><i class="fa fa-pencil"></i> Edit</button>
-                            <button type="button" class="btn btn-danger my-2" data-toggle="modal"
-                        data-target="#modalDeleteComponent" onclick="deleteData(`' . $data->id . '`)"><i class="fa fa-trash"></i> Delete</button>
-                        </div>
-                    </td>
-                    ';
-                })
-                ->addColumn('image', function ($data) {
-                    return '
-                    <td>
-                        <div class="row">
-                            <img src="' . asset($data->image) . '" />
-                        </div>
-                    </td>
-                    ';
-                })
-                ->rawColumns(['action', 'image'])
-                ->make(true);
-        }
-
         return view('admin.articles.index');
     }
 

@@ -11,36 +11,24 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h2>Manage <b>Articles</b></h2>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-info add-new" data-toggle="modal" data-target="#modalForm"
-                                id="btn-add-modal"><i class="fa fa-plus"></i> Add
-                                New</button>
+                            <h2>Articles</h2>
                         </div>
                     </div>
                 </div>
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
+                <div class="d-flex flex-column gap-3">
+                    <div class="d-flex flex-row justify-content-between">
+                        <span class="fs-5 fw-bold"></span>
+                        <button id="btn-add-modal" class="btn btn-sm btn-success px-4" data-toggle="modal"
+                            data-target="#modalForm" onclick="">Add</button>
                     </div>
-                @elseif($message = Session::get('delete'))
-                    <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
+                    <div id="article-content" class="d-flex flex-column gap-2">
+
                     </div>
-                @endif
-                <table id="data-table" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Photo</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                </table>
+                    <nav aria-label="Page navigation example">
+                        <ul id="pagination" class="pagination justify-content-center">
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
@@ -96,6 +84,7 @@
         let selectedId;
         let notyf;
         let selectedSlug;
+        let page = 1;
 
         var loadFile = function(event) {
             var output = document.getElementById('output');
@@ -106,7 +95,7 @@
         };
 
         $(document).ready(function() {
-            initializeTable()
+            getArticle()
 
             notyf = new Notyf({
                 duration: 3000,
@@ -116,40 +105,6 @@
                 },
             });
         })
-
-        function initializeTable() {
-            table = $('#data-table').DataTable({
-                processing: true,
-                serverSide: true,
-                searching: true,
-                ajax: "{{ route('articles.index') }}",
-                columns: [{
-                        data: 'image',
-                        name: 'image',
-                    },
-                    {
-                        data: 'title',
-                        name: 'title'
-                    },
-                    {
-                        data: 'description',
-                        name: 'description',
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
-
-                ]
-            });
-        }
-
-        function reinitializeTable() {
-            $('#data-table').DataTable().clear().destroy()
-            initializeTable()
-        }
 
         $('#btn-add-modal').click(function() {
             formReset()
@@ -215,7 +170,7 @@
                     });
                     notyf.success(response.message);
                     $('#btn-add').html('Add')
-                    reinitializeTable()
+                    getArticle()
                 }
             });
         })
@@ -248,7 +203,7 @@
                     });
                     notyf.success(response.message);
                     $('#btn-update').html('Update')
-                    reinitializeTable()
+                    getArticle()
                 }
             });
         })
@@ -272,7 +227,7 @@
                         type: "click"
                     });
                     notyf.success(data.message);
-                    reinitializeTable()
+                    getArticle()
                 },
                 error: function(request, msg, error) {
                     $('#btn-delete').html('Hapus')
@@ -280,5 +235,93 @@
                 }
             });
         })
+
+        function getArticle() {
+            $('#pagination').html('')
+            $('#article-content').html(loaderPrimary())
+            $.ajax({
+                url: `{{ route('articles.get') }}?page=${page}`,
+                type: "GET",
+                dataType: "json",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                    $('#article-content').html('')
+                    let pagination = data.links
+
+                    if (data.data.length > 0) {
+                        pagination.map((item) => {
+                            let html = ``;
+
+                            if (item.active == true) {
+                                html = `<li class="page-item active" aria-current="page">
+                            <span class="page-link">${item.label}</span>
+                            </li>`
+                            } else {
+                                html =
+                                    `<li class="page-item"><a class="page-link" href="#" onclick="setPage(${item.label})">${item.label}</a></li>`
+                            }
+
+                            if (item.label.includes('Previous')) {
+                                if (item.active == false) {
+                                    html =
+                                        `<li class="page-item ${item.url == null ? 'disabled' : ''}" ${item.url != null ? `onclick="prevPage()"` : ''}>
+                                        <a class="page-link" href="#">Previous</a>
+                                    </li>`
+                                }
+                            }
+
+                            if (item.label.includes('Next')) {
+                                if (item.active == false) {
+                                    html =
+                                        `<li class="page-item ${item.url == null ? 'disabled' : ''}" ${item.url != null ? `onclick="nextPage()"` : ''}><a class="page-link" href="#">Next</a></li>`
+                                }
+                            }
+
+                            $('#pagination').append(html)
+                        })
+
+                        let html = ''
+                        data.data.map(item => {
+                            html = `
+                        <div class="d-flex flex-row justify-content-between bg-gray p-2">
+                                    <div class="d-flex flex-row gap-3">
+                                        <img src="${item.image}"
+                                            class="rounded-2" width="150" />
+                                        <div class="d-flex flex-column">
+                                            <span>${item.title}</span>
+                                            <small>${item.description}</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row border-start border-2 pl-3 gap-2">
+                                        <i class="fa fa-pencil" data-toggle="modal"
+                                        data-target="#modalForm" style="cursor: pointer" onclick="editData('${item.slug}')"></i>
+                                        <i class="fa fa-trash text-danger" data-toggle="modal"
+                                        data-target="#modalDeleteComponent" style="cursor: pointer" onclick="deleteData('${item.id}')"></i>
+                                    </div>
+                                </div>
+                        `
+                            $('#article-content').append(html)
+                        })
+                    }
+                },
+            });
+        }
+
+        function prevPage() {
+            page--
+            getArticle()
+        }
+
+        function nextPage() {
+            page++
+            getArticle()
+        }
+
+        function setPage(number) {
+            page = number
+            getArticle()
+        }
     </script>
 @endsection
