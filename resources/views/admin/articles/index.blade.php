@@ -165,7 +165,7 @@
             $('#btn-add').addClass('d-none')
             $('#btn-update').removeClass('d-none')
             $.ajax({
-                url: `{{ url('admin/articles/${slug}') }}`,
+                url: `{{ url('articles/${slug}') }}`,
                 type: "GET",
                 dataType: "json",
                 headers: {
@@ -226,7 +226,7 @@
             data.append('_method', 'PUT');
 
             $.ajax({
-                url: `{{ url('/admin/articles/${selectedSlug}') }}`,
+                url: `{{ url('/articles/${selectedSlug}') }}`,
                 type: "POST",
                 dataType: "json",
                 cache: false,
@@ -257,7 +257,7 @@
             $(this).html(loader())
 
             $.ajax({
-                url: `{{ url('admin/articles/${selectedId}') }}`,
+                url: `{{ url('articles/${selectedId}') }}`,
                 type: "DELETE",
                 dataType: "json",
                 headers: {

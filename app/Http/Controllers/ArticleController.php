@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Services\ImageServices;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -77,6 +78,7 @@ class ArticleController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'slug' => Str::slug($request->input('title')),
+            'admin_id' => Auth::user()->id,
             'image' => $this->imageServices->uploadImage($request->file('image')),
         ]);
 

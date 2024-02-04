@@ -20,11 +20,12 @@ class ArticleFactory extends Factory
     {
         $user = Admin::first();
 
+        $title = fake()->text(30);
         return [
-            'title' => fake()->text(30),
+            'title' => $title,
             'description' => fake()->text(200),
             'image' => fake()->imageUrl(640, 640),
-            'slug' => Str::slug(fake()->text(30)),
+            'slug' => Str::slug($title),
             'admin_id' => $user->id
         ];
     }
