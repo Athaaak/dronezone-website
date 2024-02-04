@@ -267,7 +267,7 @@
                     'id': selectedId,
                 },
                 success: function(data) {
-                    $(this).html('Hapus')
+                    $('#btn-delete').html('Hapus')
                     $("[data-dismiss=modal]").trigger({
                         type: "click"
                     });
@@ -275,7 +275,7 @@
                     reinitializeTable()
                 },
                 error: function(request, msg, error) {
-                    $(this).html('Hapus')
+                    $('#btn-delete').html('Hapus')
 
                 }
             });
