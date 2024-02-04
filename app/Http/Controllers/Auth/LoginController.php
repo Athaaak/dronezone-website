@@ -47,9 +47,10 @@ class LoginController extends Controller
         if (auth()->user()->role == 'provider') {
             $user_id = auth()->user()->id;
 
-            $provider = Provider::withTrashed()->where('user_id', $user_id)->first();
+            $provider = Provider::where('user_id', $user_id)->first();
+            $provider_trash = Provider::withTrashed()->where('user_id', $user_id)->first();
 
-            if ($provider != null) {
+            if ($provider_trash != null && $provider == null) {
                 Auth::logout();
                 return $this->redirectTo = abort(403, 'Account has been removed. Please contact administrator.');
             }
