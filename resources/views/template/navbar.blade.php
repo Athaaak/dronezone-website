@@ -88,6 +88,8 @@
                         class="fas fa-home me-3"></i>Inventory</a>
                 <a href="{{ route('articles.index') }}" class="nav-menu-item"><i
                         class="fas fa-home me-3"></i>Articles</a>
+                <a href="{{ route('accounts.index') }}" class="nav-menu-item"><i
+                        class="fas fa-home me-3"></i>Account</a>
             @elseif(Auth::user()->role == 'provider')
                 <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
             @endif

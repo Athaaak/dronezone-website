@@ -13,23 +13,14 @@
                         <div class="col-sm-6">
                             <h2>Provider <b>List</b></h2>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="d-flex flex-row align-items-center gap-2">
-                                <small class="fw-bold">Sort</small>
-                                <select class="form-select" name="district" id="district">
-                                    <option disabled selected>Select District</option>
-                                </select>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <table id="data-table" class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Username</th>
+                            <th>Provider</th>
                             <th>Company</th>
                             <th>Created</th>
-                            <th>Location</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,31 +35,14 @@
 
         $(document).ready(function() {
             initializeTable()
-            fetchDistrict()
         })
-
-        $('#district').change(function() {
-            reinitializeTable()
-        })
-
-        function fetchDistrict() {
-            fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/3578.json`)
-                .then(response => response.json())
-                .then((data) => {
-                    data.map((item) => {
-                        $('#district').append(
-                            `<option id="${item.id}">${item.name}</option>`
-                        )
-                    })
-                });
-        }
 
         function initializeTable() {
             table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
                 searching: true,
-                ajax: `{{ route('dashboard.index') }}?district=${$('#district').val()}`,
+                ajax: `{{ route('account.datatable') }}`,
                 columns: [{
                         data: 'email',
                         name: 'email',
@@ -82,10 +56,6 @@
                         name: 'created_at',
                     },
                     {
-                        data: 'district',
-                        name: 'district',
-                    },
-                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -94,11 +64,6 @@
 
                 ]
             });
-        }
-
-        function reinitializeTable() {
-            $('#data-table').DataTable().clear().destroy()
-            initializeTable()
         }
     </script>
 @endsection

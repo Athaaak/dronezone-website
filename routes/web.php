@@ -1,14 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Provider\PortfolioController;
+use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Api\ApiPortfolioController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\Provider\InventoryController;
+use App\Http\Controllers\Admin\InventoryController;
 use App\Http\Controllers\Provider\ProviderController;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,6 +57,7 @@ Route::middleware(['role:admin,provider'])->group(function () {
         'articles' => ArticleController::class,
         'portfolio' => PortfolioController::class,
         'inventory' => InventoryController::class,
+        'accounts' => AccountController::class,
     ]);
 });
 
