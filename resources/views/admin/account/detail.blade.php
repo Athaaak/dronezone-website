@@ -16,28 +16,29 @@
                         <div class="d-flex flex-column gap-2">
                             <div>
                                 <h5 class="fw-bold">Company Name</h5>
-                                <span>{{ $provider->company_name }}</span>
+                                <span>{{ $provider->company_name ?? '-' }}</span>
                             </div>
-                            <img src="{{ $provider->photo }}" class="rounded-2" />
+                            <img src="{{ $provider->photo ?? asset('img/no-image.jpg') }}" class="rounded-2" />
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mt-4">
                         <h5 class="fw-bold">Area Coverage</h5>
-                        <span>{{ $provider->district }}</span>
+                        <span>{{ $provider->district ?? '-' }}</span>
                     </div>
                     <div class="col-md-6 mt-4">
                         <h5 class="fw-bold">Category</h5>
-                        <span>{{ $provider->division }}</span>
+                        <span>{{ $provider->division ?? '-' }}</span>
                     </div>
                     <div class="col-md-6 mt-4">
                         <h5 class="fw-bold">Date Created</h5>
-                        <span>{{ $provider->created_at }}</span>
+                        <span>{{ $provider->created_at ?? '-' }}</span>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteComponent">Remove
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteComponent"
+                        {{ $provider->id ?? 'disabled' }}>Remove
                         Account</button>
                 </div>
             </div>
@@ -48,7 +49,7 @@
 @endsection
 @section('scripts')
     <script type="text/javascript">
-        let provider_id = "{{ $provider->id }}"
+        let provider_id = "{{ $provider->id ?? null }}"
         let notyf;
 
         $(document).ready(function() {

@@ -20,12 +20,19 @@ class AccountController extends Controller
     {
         if (Auth::user()->role != 'provider') {
             $provider_id = $request->provider_id;
+            $user_id = $request->user_id;
 
-            if ($provider_id == null) {
+            if ($provider_id == null && $user_id == null) {
                 return view('admin.account.index');
             }
 
-            $provider = Provider::with(['user'])->where('id', $provider_id)->first();
+            $provider = null;
+
+            if ($user_id != null) {
+                $provider = Provider::with(['user'])->where('user_id', $user_id)->first();
+            } else {
+                $provider = Provider::with(['user'])->where('id', $provider_id)->first();
+            }
 
             return view('admin.account.detail', compact('provider'));
         }
@@ -87,7 +94,13 @@ class AccountController extends Controller
             $db = Provider::find($id);
             $db->delete();
 
-            return response()->json(['message' => 'Provider was successfuly deleted!']);
+            if (Auth::user()->id == $db->user_id) {
+                Auth::logout();
+
+                return response()->json(['message' => 'Provider was successfuly deleted! This account will be logout']);
+            } else {
+                return response()->json(['message' => 'Provider was successfuly deleted!']);
+            }
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json(['message' => $th->getMessage()]);

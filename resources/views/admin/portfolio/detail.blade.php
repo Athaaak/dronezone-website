@@ -15,26 +15,26 @@
                     <div class="col-md-3">
                         <div class="d-flex flex-column gap-2">
                             <div>
-                                <h5 class="fw-bold">{{ $provider->company_name }}</h5>
-                                <span>{{ $provider->division }}</span>
+                                <h5 class="fw-bold">{{ $provider->company_name ?? '-' }}</h5>
+                                <span>{{ $provider->division ?? '-' }}</span>
                             </div>
-                            <img src="{{ $provider->photo }}" class="rounded-2" />
+                            <img src="{{ $provider->photo ?? asset('img/no-image.jpg') }}" class="rounded-2" />
                             <div>
                                 <h5 class="fw-bold">Area Coverage</h5>
-                                <span>{{ $provider->district }}</span>
+                                <span>{{ $provider->district ?? '-' }}</span>
                             </div>
                             <div>
                                 <h5 class="fw-bold">Address</h5>
-                                <span>{{ $provider->address_provider }}</span>
+                                <span>{{ $provider->address_provider ?? '-' }}</span>
                             </div>
                             <div>
                                 <h5 class="fw-bold">Contact</h5>
-                                <span>{{ $provider->phone_number }}</span>
-                                <span>{{ $provider->provider_email }}</span>
+                                <span>{{ $provider->phone_number ?? '-' }}</span>
+                                <span>{{ $provider->provider_email ?? '-' }}</span>
                             </div>
                             <div>
                                 <h5 class="fw-bold">Date Created</h5>
-                                <span>{{ $provider->user->created_at }}</span>
+                                <span>{{ $provider->user->created_at ?? '-' }}</span>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
 @endsection
 @section('scripts')
     <script type="text/javascript">
-        let provider_id = "{{ $provider->id }}"
+        let provider_id = "{{ $provider->id ?? '-' }}"
         let page = 1;
         let selectedId;
         let notyf;

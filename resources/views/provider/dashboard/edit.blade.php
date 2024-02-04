@@ -24,7 +24,8 @@
                                         <span>{{ $user->provider->company_name ?? '-' }}</span>
                                     @endif
                                 </div>
-                                <img id="output" src="{{ $user->provider->photo ?? '' }}" class="rounded-2" />
+                                <img id="output" src="{{ $user->provider->photo ?? asset('img/no-image.jpg') }}"
+                                    class="rounded-2" />
                                 <div class="file-input-wrapper btn btn-sm btn-light border border-1">
                                     Upload
                                     <input accept="image/*" onchange="loadFile(event)" type="file" name="photo"

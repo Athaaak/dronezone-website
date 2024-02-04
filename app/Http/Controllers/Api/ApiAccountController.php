@@ -20,10 +20,17 @@ class ApiAccountController extends Controller
             return DataTables::eloquent($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
+                    $action = '';
+
+                    if ($data->provider == null) {
+                        $action = '<a href="' . route('accounts.index') . '?user_id=' . $data->id . '" class="btn btn-success my-2">Account</a>';
+                    } else {
+                        $action = '<a href="' . route('accounts.index') . '?provider_id=' . $data->provider_id . '" class="btn btn-success my-2">Account</a>';
+                    }
                     return '
                     <td>
                         <div class="d-flex flex-column">
-                            <a href="' . route('accounts.index') . '?provider_id=' . $data->provider_id . '" class="btn btn-success my-2">Account</a>
+                            ' . $action . '
                         </div>
                     </td>
                     ';
