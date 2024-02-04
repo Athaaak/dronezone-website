@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Provider;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -43,6 +45,15 @@ class LoginController extends Controller
             return $this->redirectTo = route('dashboard.index');
         }
         if (auth()->user()->role == 'provider') {
+            $user_id = auth()->user()->id;
+
+            $provider = Provider::where('user_id', $user_id)->where('deleted_at', null)->count();
+
+            if ($provider == 0) {
+                Auth::logout();
+
+                return $this->redirectTo = abort(403, 'Account has been removed. Please contact administrator.');
+            }
             return $this->redirectTo = route('dashboard-provider');
         }
     }
