@@ -33,7 +33,7 @@ class AccountController extends Controller
         $auth = Auth::user();
         $provider = Provider::with(['user'])->where('user_id', $auth->id)->first();
 
-        return view('admin.account.detail');
+        return view('admin.account.detail', compact('provider'));
     }
 
     /**
