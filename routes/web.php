@@ -32,6 +32,7 @@ Route::get('/', [HomepageController::class, 'homepage']);
 Route::get('/explore', [HomepageController::class, 'explore'])->name('explore');
 Route::get('/explore-general', [HomepageController::class, 'exploregeneral'])->name('general');
 Route::get('/explore-professional', [HomepageController::class, 'exploreprofessional'])->name('professional');
+Route::get('/provider', [HomepageController::class, 'provider'])->name('provider.home');
 Route::get('/article', [HomepageController::class, 'article'])->name('article');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 

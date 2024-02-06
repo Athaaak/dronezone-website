@@ -48,7 +48,7 @@
                             <div id="inventory-content" class="d-flex flex-column gap-2">
 
                             </div>
-                            <nav aria-label="Page navigation example">
+                            <nav>
                                 <ul id="pagination" class="pagination justify-content-center">
                                 </ul>
                             </nav>

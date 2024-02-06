@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\ApiAccountController;
 use App\Http\Controllers\Api\ApiArticleController;
 use App\Http\Controllers\Api\ApiInventoryController;
 use App\Http\Controllers\Api\ApiPortfolioController;
+use App\Http\Controllers\Api\ApiProviderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +39,8 @@ Route::prefix('/account')->group(function () {
 
 Route::prefix('/article')->group(function () {
     Route::get('/get-article', [ApiArticleController::class, 'getArticle'])->name('articles.get');
+});
+
+Route::prefix('/provider')->group(function () {
+    Route::get('/get-provider', [ApiProviderController::class, 'getProvider'])->name('provider.get');
 });
