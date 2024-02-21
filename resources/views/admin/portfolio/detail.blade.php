@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-lg">
         @if (Auth::user()->role == 'admin')
-            <a href="{{ route('portfolio.index') }}" class="text-dark">
+            <a href="{{ url()->previous() }}" class="text-dark">
                 <i class="fa fa-arrow-left mt-4 fs-2" aria-hidden="true"></i>
             </a>
         @endif
