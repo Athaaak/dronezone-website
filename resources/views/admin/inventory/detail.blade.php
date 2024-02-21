@@ -6,7 +6,12 @@
 
 @section('content')
     <div class="container-lg">
-        <div class="card my-5">
+        @if (Auth::user()->role == 'admin')
+            <a href="{{ route('inventory.index') }}" class="text-dark">
+                <i class="fa fa-arrow-left mt-4 fs-2" aria-hidden="true"></i>
+            </a>
+        @endif
+        <div class="card my-4">
             <div class="card-header header-color">
                 <h4>Company Inventory</h4>
             </div>
