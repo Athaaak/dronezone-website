@@ -12,12 +12,13 @@
             <div class="feature-block">
                 <div class="feature">
                     <select id="district" class="form-select">
-                        <option value="" disabled selected>Lokasi</option>
+                        <option value="" selected>Semua Lokasi</option>
                     </select>
                 </div>
                 <div class="feature">
                     <select id="division" class="form-select">
-                        <option value="Profesional" selected>Profesional</option>
+                        <option value="" selected>Semua</option>
+                        <option value="Profesional">Profesional</option>
                         <option value="Umum">Umum</option>
                     </select>
                 </div>
