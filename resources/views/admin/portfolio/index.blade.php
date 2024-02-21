@@ -74,16 +74,16 @@
                         name: 'email',
                     },
                     {
-                        data: 'email',
-                        name: 'email'
+                        data: 'company_name',
+                        name: 'company_name'
                     },
                     {
-                        data: 'email',
-                        name: 'email',
+                        data: 'created_at',
+                        name: 'created_at',
                     },
                     {
-                        data: 'email',
-                        name: 'email',
+                        data: 'district',
+                        name: 'district',
                     },
                     {
                         data: 'action',
