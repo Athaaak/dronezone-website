@@ -46,9 +46,6 @@
                     <div class="col-md-9">
                         <div class="d-flex flex-column">
                             <div class="d-flex align-self-end">
-                                <a class="text-secondary" href="{{ route('company-profile') }}?id={{ $user->id }}">
-                                    <i class="fa fa-edit fs-4"></i>
-                                </a>
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Description</h5>
@@ -57,10 +54,6 @@
                         </div>
                         <div class="d-flex flex-column border border-2 mt-4 pl-4">
                             <div class="d-flex align-self-end">
-                                <a class="text-secondary"
-                                    href="{{ route('portfolio.index') }}?provider_id={{ $user->provider->id }}">
-                                    <i class="fa fa-edit fs-4"></i>
-                                </a>
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Portfolio</h5>
@@ -80,10 +73,6 @@
                         </div>
                         <div class="d-flex flex-column border border-2 pl-4">
                             <div class="d-flex align-self-end">
-                                <a class="text-secondary"
-                                    href="{{ route('inventory.index') }}?provider_id={{ $user->provider->id }}">
-                                    <i class="fa fa-edit fs-4"></i>
-                                </a>
                             </div>
                             <div class="d-flex flex-column">
                                 <h5 class="fw-bold">Inventory</h5>
@@ -100,6 +89,10 @@
                                     @endforelse
                                 </div>
                             </div>
+                        </div>
+                        <div class="my-4">
+                            <a href="https://api.whatsapp.com/send/?phone={{ $user->provider->phone_number }}&text=Halo&type=phone_number&app_absent=0"
+                                class="btn btn-secondary btn-sm" target="_blank">Contact</a>
                         </div>
                     </div>
                 </div>

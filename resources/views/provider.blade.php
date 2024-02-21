@@ -165,8 +165,8 @@
                                         </div>
                                     </div>
                                     <div class="d-flex gap-2 justify-content-end">
-                                        <button class="btn btn-warning btn-sm">View More</button>
-                                        <button class="btn btn-secondary btn-sm">Contact</button>
+                                        <a href="{{ route('provider.detail') }}?id=${item.user_id}" class="btn btn-warning btn-sm">View More</a>
+                                        <a href="${`https://api.whatsapp.com/send/?phone=${item.phone_number}&text=Halo&type=phone_number&app_absent=0`}" class="btn btn-secondary btn-sm" target="_blank">Contact</a>
                                     </div>
                                 </div>
                             </div>

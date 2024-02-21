@@ -62,4 +62,11 @@ class ProviderController extends Controller
 
         return response()->json(['message' => 'Provider successfully updated']);
     }
+
+    public function detail(Request $request)
+    {
+        $user = User::with(['provider' => ['portfolio', 'inventory']])->where('id', $request->id)->first();
+
+        return view('provider.dashboard.detail', compact('user'));
+    }
 }
