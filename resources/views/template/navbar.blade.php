@@ -7,49 +7,49 @@
             </div>
 
             @if (is_null(Auth::user()))
-                <div class="logo" id="siteBrand">
-                    DRONEZONE
-                </div>
+            <div class="logo" id="siteBrand">
+                DRONEZONE
+            </div>
             @elseif(Auth::user()->role == 'admin')
-                <div class="logo" id="siteBrand">
-                    DRONEZONE adminsite.
-                </div>
+            <div class="logo" id="siteBrand">
+                DRONEZONE adminsite.
+            </div>
             @elseif(Auth::user()->role == 'provider')
-                <div class="logo" id="siteBrand">
-                    DRONEZONE providersite.
-                </div>
+            <div class="logo" id="siteBrand">
+                DRONEZONE providersite.
+            </div>
             @endif
 
             <div class="login-container">
                 <div class="icon-container">
                     @if (is_null(Auth::user()))
-                        <div class="whatsapp">
-                            <a href="">
-                                <img src="https://img.icons8.com/windows/32/whatsapp--v1.png">
-                                <img src="https://img.icons8.com/ios-glyphs/32/whatsapp.png ">
-                            </a>
-                        </div>
-                        <div class="email">
-                            <a href="">
-                                <img src="https://img.icons8.com/material-outlined/30/new-post.png ">
-                                <img src="https://img.icons8.com/material-rounded/30/new-post.png">
-                            </a>
-                        </div>
+                    <div class="whatsapp">
+                        <a href="">
+                            <img src="https://img.icons8.com/windows/32/whatsapp--v1.png">
+                            <img src="https://img.icons8.com/ios-glyphs/32/whatsapp.png ">
+                        </a>
+                    </div>
+                    <div class="email">
+                        <a href="">
+                            <img src="https://img.icons8.com/material-outlined/30/new-post.png ">
+                            <img src="https://img.icons8.com/material-rounded/30/new-post.png">
+                        </a>
+                    </div>
                     @endif
                 </div>
                 @if (is_null(Auth::user()))
-                    <a class="login" href="{{ route('login') }}">Login</a>
+                <a class="login" href="{{ route('login') }}">Login</a>
                 @else
-                    <p class="already-login">{{ Auth::user()->name }}</p>
-                    <div class="logout-button" style="display:flex; justify-content:flex-end;">
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button type="submit" class="button">
-                                <img src="https://img.icons8.com/material-outlined/30/exit.png" />
-                                <img src="https://img.icons8.com/material-rounded/30/exit.png" />
-                            </button>
-                        </form>
-                    </div>
+                <p class="already-login">{{ Auth::user()->name }}</p>
+                <div class="logout-button" style="display:flex; justify-content:flex-end;">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="button">
+                            <img src="https://img.icons8.com/material-outlined/30/exit.png" />
+                            <img src="https://img.icons8.com/material-rounded/30/exit.png" />
+                        </button>
+                    </form>
+                </div>
                 @endif
             </div>
         </div>
@@ -73,31 +73,23 @@
         </div>
         <div>
             @if (is_null(Auth::user()))
-                <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
-                <a href="{{ route('explore') }}" class="nav-menu-item"><i
-                        class="fab fa-product-hunt me-3"></i>Explore</a>
-                <a href="{{ route('article') }}" class="nav-menu-item"><i class="fas fa-search me-3"></i>Article</a>
-                <a href="#" class="nav-menu-item"><i class="fas fa-file-alt me-3"></i>Join Us</a>
-                <a href="#" class="nav-menu-item"><i class="fas fa-building me-3"></i>About Us</a>
+            <a href="/" class="nav-menu-item"><i class="fas fa-home me-3"></i>Home</a>
+            <a href="{{ route('provider.home') }}" class="nav-menu-item"><i
+                    class="fab fa-product-hunt me-3"></i>Explore</a>
+            <a href="{{ route('article') }}" class="nav-menu-item"><i class="fas fa-search me-3"></i>Article</a>
+            <a href="#" class="nav-menu-item"><i class="fas fa-file-alt me-3"></i>Join Us</a>
+            <a href="#" class="nav-menu-item"><i class="fas fa-building me-3"></i>About Us</a>
             @elseif(Auth::user()->role == 'admin')
-                <a href="{{ route('dashboard.index') }}" class="nav-menu-item"><i
-                        class="fas fa-home me-3"></i>Dashboard</a>
-                <a href="{{ route('portfolio.index') }}" class="nav-menu-item"><i
-                        class="fas fa-home me-3"></i>Portfolio</a>
-                <a href="{{ route('inventory.index') }}" class="nav-menu-item"><i
-                        class="fas fa-home me-3"></i>Inventory</a>
-                <a href="{{ route('articles.index') }}" class="nav-menu-item"><i
-                        class="fas fa-home me-3"></i>Articles</a>
-                <a href="{{ route('accounts.index') }}" class="nav-menu-item"><i
-                        class="fas fa-home me-3"></i>Account</a>
+            <a href="{{ route('dashboard.index') }}" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
+            <a href="{{ route('portfolio.index') }}" class="nav-menu-item"><i class="fas fa-home me-3"></i>Portfolio</a>
+            <a href="{{ route('inventory.index') }}" class="nav-menu-item"><i class="fas fa-home me-3"></i>Inventory</a>
+            <a href="{{ route('articles.index') }}" class="nav-menu-item"><i class="fas fa-home me-3"></i>Articles</a>
+            <a href="{{ route('accounts.index') }}" class="nav-menu-item"><i class="fas fa-home me-3"></i>Account</a>
             @elseif(Auth::user()->role == 'provider')
-                <a href="/dashboard-provider" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
-                <a href="{{ route('portfolio.index') }}" class="nav-menu-item"><i
-                        class="fas fa-home me-3"></i>Portfolio</a>
-                <a href="{{ route('inventory.index') }}" class="nav-menu-item"><i
-                        class="fas fa-home me-3"></i>Inventory</a>
-                <a href="{{ route('accounts.index') }}" class="nav-menu-item"><i
-                        class="fas fa-home me-3"></i>Account</a>
+            <a href="/dashboard-provider" class="nav-menu-item"><i class="fas fa-home me-3"></i>Dashboard</a>
+            <a href="{{ route('portfolio.index') }}" class="nav-menu-item"><i class="fas fa-home me-3"></i>Portfolio</a>
+            <a href="{{ route('inventory.index') }}" class="nav-menu-item"><i class="fas fa-home me-3"></i>Inventory</a>
+            <a href="{{ route('accounts.index') }}" class="nav-menu-item"><i class="fas fa-home me-3"></i>Account</a>
             @endif
         </div>
     </div>

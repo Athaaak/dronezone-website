@@ -44,7 +44,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard-admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard-admin');
 
     Route::prefix('/admin')->group(function () {
-        Route::get('/company-profile', [CompanyController::class, 'index'])->name('company-proile');
+        Route::get('/company-profile', [CompanyController::class, 'index'])->name('company-profile');
         Route::resources([
             'dashboard' => DashboardController::class,
         ]);
