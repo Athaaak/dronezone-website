@@ -10,7 +10,9 @@ class ApiArticleController extends Controller
 {
     public function getArticle(Request $request)
     {
-        $data = Article::paginate(4);
+        $data = Article::when(request('filter') == 'latest', function ($q) {
+            return $q->orderBy('created_at', 'desc');
+        })->paginate(9);
         return response()->json($data, 200);
     }
 }

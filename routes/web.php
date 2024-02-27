@@ -35,6 +35,7 @@ Route::get('/explore-professional', [HomepageController::class, 'exploreprofessi
 Route::get('/provider', [HomepageController::class, 'provider'])->name('provider.home');
 Route::get('/provider/detail', [ProviderController::class, 'detail'])->name('provider.detail');
 Route::get('/article', [HomepageController::class, 'article'])->name('article');
+Route::get('/article/{slug}', [HomepageController::class, 'detailArticle'])->name('article.detail');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Auth::routes();

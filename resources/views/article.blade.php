@@ -1,34 +1,35 @@
 @extends('template.template')
 
 @section('title')
-Dronezone
+    Dronezone
 @endsection
 
 @section('content')
 
-<head>
-    <link rel="stylesheet" href="{{ asset('css/article.css') }}">
-</head>
+    <head>
+        <link rel="stylesheet" href="{{ asset('css/article.css') }}?version={{ time() }}">
+    </head>
 
-<div class="feature-container">
-    <section class="news-reel">
-        <h2 class="section-title">Latest Article</h2>
-        <div class="categories">
-            <div class="category active">All</div>
-            <div class="category">Latest</div>
-        </div>
-        <div class="news-container">
-            <div id="article-content" class="d-flex flex-column gap-2">
-
+    <div class="feature-container">
+        <section class="news-reel">
+            <h2 class="section-title">Latest Article</h2>
+            <div class="categories">
+                <div id="filter-all" class="category active">All</div>
+                <div id="filter-latest" class="category">Latest</div>
             </div>
-            <nav>
-                <ul id="pagination" class="pagination justify-content-center">
-                </ul>
-            </nav>
-        </div>
-    </section>
-</div>
-@include('template.footer')
+            <div class="news-container">
+                <div id="article-content" class="d-flex gap-2" style="max-width: 1500px;
+                flex-flow: wrap;">
+
+                </div>
+                <nav>
+                    <ul id="pagination" class="pagination justify-content-center">
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+    @include('template.footer')
 @endsection
 
 @section('scripts')
@@ -38,6 +39,7 @@ Dronezone
         let notyf;
         let selectedSlug;
         let page = 1;
+        let filter = "";
 
         var loadFile = function(event) {
             var output = document.getElementById('output');
@@ -59,6 +61,34 @@ Dronezone
             });
         })
 
+        $('#filter-all').click(function() {
+            filter = "all"
+
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active')
+                filter = ""
+                getArticle()
+            } else {
+                $(this).addClass('active')
+                $('#filter-latest').removeClass('active')
+                getArticle()
+            }
+        })
+
+        $('#filter-latest').click(function() {
+            filter = "latest"
+
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active')
+                filter = ""
+                getArticle()
+            } else {
+                $(this).addClass('active')
+                $('#filter-all').removeClass('active')
+                getArticle()
+            }
+        })
+
         function deleteData(id) {
             selectedId = id
         }
@@ -67,7 +97,7 @@ Dronezone
             $('#pagination').html('')
             $('#article-content').html(loaderPrimary())
             $.ajax({
-                url: `{{ route('articles.get') }}?page=${page}`,
+                url: `{{ route('articles.get') }}?page=${page}&filter=${filter}`,
                 type: "GET",
                 dataType: "json",
                 headers: {
@@ -111,28 +141,18 @@ Dronezone
 
                         let html = ''
                         data.data.map(item => {
-                            console.log(item)
                             html = `
-                            <div class="d-flex flex-row justify-content-between bg-gray p-3">
-                            <div class="d-flex flex-row gap-3">
-                                <img src="${item.image}" class="rounded-2" width="250"
-                                    style="object-fit: cover" />
-                                <div class="d-flex flex-column">
-                                    <span class="fw-bold">${item.title}</span>
-                                    <small>${item.description}</small>
-                                    <div class="row mt-4">
-                                        <div class="col-md-8">
-                                            <div class="d-flex flex-column gap-4">
-                                            </div>
+                                <a class="card" href="{{ url('article') }}/${item.slug}" style="text-decoration: none; color: black; width: 450px    ">
+                                    <div class="d-flex flex-column align-items-center p-2">
+                                            <img src="${item.image}" class="rounded-2 p-2" width="250"
+                                        style="object-fit: cover;max-width: 250px;" />
                                         </div>
-                                    </div>
-                                    <div class="d-flex gap-2 justify-content-end">
-                                        <a href="{{ route('provider.detail') }}?id=${item.user_id}" class="btn btn-warning btn-sm">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        `
+                                        <div class="d-flex flex-column p-2">
+                                            <span class="fw-bold">${item.title}</span>
+                                            <small>${formatDate(item.created_at)} | Uploaded by Admin</small>
+                                        </div>
+                                </a>
+                            `
                             $('#article-content').append(html)
                         })
                     }
@@ -153,6 +173,21 @@ Dronezone
         function setPage(number) {
             page = number
             getArticle()
+        }
+
+        function formatDate(date) {
+            const timestamp = new Date(date);
+
+            const year = timestamp.getUTCFullYear();
+            const month = (timestamp.getUTCMonth() + 1).toString().padStart(2, '0');
+            const day = timestamp.getUTCDate().toString().padStart(2, '0');
+            const hours = timestamp.getUTCHours().toString().padStart(2, '0');
+            const minutes = timestamp.getUTCMinutes().toString().padStart(2, '0');
+            const seconds = timestamp.getUTCSeconds().toString().padStart(2, '0');
+
+            const formattedTimestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+            return formattedTimestamp
         }
     </script>
 @endsection

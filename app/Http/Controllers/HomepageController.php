@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -43,5 +44,12 @@ class HomepageController extends Controller
     public function provider()
     {
         return view('provider');
+    }
+
+    public function detailArticle($slug)
+    {
+        $article = Article::where('slug', $slug)->first();
+
+        return view('detail-article', compact('article'));
     }
 }
