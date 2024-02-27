@@ -88,6 +88,7 @@ class RegisterController extends Controller
             'division' => '-',
             'address_provider' => '-',
             'phone_number' => '-',
+            'provider_email' => $request->email,
             'description' => '-',
             'district' => '-',
             'user_id' => $user->id
